@@ -1,0 +1,782 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Practice exam questions and flashcards for Chapters 1–5 of the Florida Real Estate Sales Associate pre-license course, with answers and explanations.">
+<title>Florida Sales Associate Review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one narrow column of three labeled sections (Setup, Question, Progress); grayscale only */
+:root{
+  --bg:#f7f7f7; --surface:#ffffff; --ink:#151515; --muted:#6e6e6e; --line:#dcdcdc; --soft:#efefef;
+  --f-body:"IBM Plex Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121212; --surface:#1b1b1b; --ink:#ececec; --muted:#9a9a9a; --line:#333333; --soft:#262626; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121212; --surface:#1b1b1b; --ink:#ececec; --muted:#9a9a9a; --line:#333333; --soft:#262626; color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:32px 64px}
+.wrap{max-width:680px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+header{display:flex;flex-direction:column;gap:6px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+h1{font-weight:600;font-size:clamp(24px,5vw,30px);line-height:1.2;margin:0;letter-spacing:-.01em}
+.sub{color:var(--muted);margin:0;font-size:15px}
+
+.section{display:flex;flex-direction:column;gap:12px}
+.section-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+  font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:8px}
+
+/* Setup */
+.setup .row{display:grid;grid-template-columns:84px 1fr;gap:12px;align-items:center;padding:12px 16px}
+.setup .row + .row{border-top:1px solid var(--line)}
+.setup .key{font-size:13px;color:var(--muted)}
+.seg{display:flex;flex-wrap:wrap;gap:6px;min-width:0}
+.chip{font:inherit;font-size:14px;border:1px solid var(--line);background:var(--surface);color:var(--ink);
+  padding:6px 12px;border-radius:6px;cursor:pointer}
+.chip:hover{border-color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--surface)}
+.chip .n{font-family:var(--f-mono);font-size:12px;opacity:.6;margin-left:6px}
+.chip:focus-visible,.opt:focus-visible,.btn:focus-visible,.dot:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+
+/* Question */
+.card{padding:20px;display:flex;flex-direction:column;gap:18px}
+.qtext{font-weight:500;font-size:clamp(18px,4vw,20px);line-height:1.4;margin:0;text-wrap:pretty}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opt{font:inherit;text-align:left;display:grid;grid-template-columns:22px 1fr auto;gap:10px;align-items:start;width:100%;
+  background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:11px 14px;color:var(--ink);cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--ink)}
+.opt .k{font-family:var(--f-mono);color:var(--muted)}
+.opt .tag{font-family:var(--f-mono);font-size:12px;color:var(--muted);white-space:nowrap}
+.opt.sel{border-color:var(--ink);background:var(--soft)}
+.opt.right{border:2px solid var(--ink);padding:10px 13px;background:var(--soft)}
+.opt.right .k,.opt.right .tag{color:var(--ink)}
+.opt.wrong{border-style:dashed;color:var(--muted)}
+.opt.wrong .txt{text-decoration:line-through}
+.opt:disabled{cursor:default}
+.why{background:var(--soft);border-radius:6px;padding:12px 14px;display:flex;flex-direction:column;gap:4px}
+.why strong{font-size:14px;font-weight:600}
+.why p{margin:0}
+.nav{display:flex;gap:8px;justify-content:space-between;flex-wrap:wrap;padding-top:16px;border-top:1px solid var(--line)}
+.nav .right{display:flex;gap:8px;flex-wrap:wrap}
+.btn{font:inherit;font-weight:500;font-size:14px;border-radius:6px;padding:9px 16px;cursor:pointer;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.btn:hover:not(:disabled){border-color:var(--ink)}
+.btn.primary{background:var(--ink);border-color:var(--ink);color:var(--surface)}
+.btn:disabled{opacity:.4;cursor:default}
+
+/* Flashcards */
+.flash{font:inherit;color:var(--ink);width:100%;min-height:260px;display:flex;flex-direction:column;justify-content:center;align-items:center;
+  gap:14px;text-align:center;padding:28px 22px;background:var(--surface);border:1px solid var(--line);border-radius:8px;cursor:pointer;
+  box-shadow:0 1px 0 var(--line),0 4px 0 -1px var(--surface),0 5px 0 -1px var(--line)}
+.flash:hover{border-color:var(--ink)}
+.flash:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.flash.back{background:var(--soft)}
+.flash .side{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.flash .fq{font-weight:500;font-size:clamp(18px,4vw,21px);line-height:1.4;max-width:46ch;text-wrap:pretty}
+.flash .fa{font-weight:600;font-size:clamp(18px,4vw,21px);line-height:1.4;max-width:46ch;text-wrap:pretty}
+.flash .fa .k{font-family:var(--f-mono);font-weight:500;margin-right:8px}
+.flash .fw{color:var(--muted);max-width:52ch;font-size:15px}
+.flash .hint{font-size:13px;color:var(--muted)}
+@media (prefers-reduced-motion:no-preference){.flash .fq,.flash .fa,.flash .fw{animation:fadeIn .18s ease-out}}
+@keyframes fadeIn{from{opacity:.2}to{opacity:1}}
+
+/* Progress */
+.progress{padding:16px;display:flex;flex-direction:column;gap:14px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:6px}
+.stat{padding:10px 12px;display:flex;flex-direction:column;gap:2px}
+.stat + .stat{border-left:1px solid var(--line)}
+.stat b{font-family:var(--f-mono);font-weight:500;font-size:20px;font-variant-numeric:tabular-nums}
+.stat span{font-size:12px;color:var(--muted)}
+.rail{display:grid;grid-template-columns:repeat(auto-fill,minmax(30px,1fr));gap:5px}
+.dot{height:30px;border-radius:4px;border:1px solid var(--line);background:var(--surface);font-family:var(--f-mono);font-size:11px;
+  display:grid;place-items:center;cursor:pointer;color:var(--muted);padding:0}
+.dot.cur{border:2px solid var(--ink);color:var(--ink)}
+.dot.ok{background:var(--ink);border-color:var(--ink);color:var(--surface)}
+.dot.no{border-style:dashed;border-color:var(--ink);color:var(--ink);text-decoration:line-through}
+.dot.ans{background:var(--soft);color:var(--ink)}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:12px;color:var(--muted)}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;border:1px solid var(--line);vertical-align:-2px;margin-right:6px}
+.legend .l-ok{background:var(--ink);border-color:var(--ink)}
+.legend .l-no{border:1px dashed var(--ink)}
+
+/* Score */
+.score{padding:20px;display:flex;flex-direction:column;gap:16px}
+.big{font-family:var(--f-mono);font-size:48px;font-weight:500;line-height:1;font-variant-numeric:tabular-nums}
+.pass{font-weight:500}
+.bars{display:flex;flex-direction:column;gap:8px}
+.bar{display:grid;grid-template-columns:84px 1fr 48px;gap:10px;align-items:center;font-size:14px}
+.track{height:8px;border-radius:4px;background:var(--soft);overflow:hidden}
+.fill{height:100%;background:var(--ink)}
+.bar .v{font-family:var(--f-mono);font-size:13px;text-align:right;font-variant-numeric:tabular-nums}
+.empty{color:var(--muted);text-align:center;padding:28px 16px}
+footer{color:var(--muted);font-size:13px;padding-top:16px;border-top:1px solid var(--line)}
+@media (max-width:440px){.setup .row{grid-template-columns:1fr;gap:8px}}
+@media (prefers-reduced-motion:no-preference){.opt,.chip,.dot,.btn{transition:background .12s,border-color .12s}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Florida Sales Associate Review</h1>
+    <p class="sub">Chapters 1–5 · practice exams with explanations and flashcards</p>
+  </header>
+
+  <section class="section setup" aria-labelledby="h-setup">
+    <div class="section-h" id="h-setup"><span>Setup</span></div>
+    <div class="panel">
+      <div class="row">
+        <span class="key">Chapter</span>
+        <div class="seg" id="chapters" role="group" aria-label="Chapter"></div>
+      </div>
+      <div class="row">
+        <span class="key">Mode</span>
+        <div class="seg" role="group" aria-label="Mode">
+          <button class="chip" id="m-practice" data-mode="practice">Practice</button>
+          <button class="chip" id="m-exam" data-mode="exam">Exam</button>
+          <button class="chip" id="m-flash" data-mode="flash">Flashcards</button>
+          <button class="chip" id="m-missed" data-mode="missed">Missed<span class="n" id="missedN">0</span></button>
+        </div>
+      </div>
+      <div class="row">
+        <span class="key">Order</span>
+        <div class="seg"><button class="chip" id="shuffle" aria-pressed="false">Shuffle</button></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="h-q">
+    <div class="section-h" id="h-q"><span id="qLabel">Question</span><span id="qCount"></span></div>
+    <div class="panel" id="main"></div>
+  </section>
+
+  <section class="section" aria-labelledby="h-p">
+    <div class="section-h" id="h-p"><span>Progress</span></div>
+    <div class="panel progress">
+      <div class="stats">
+        <div class="stat"><b id="sDone">0</b><span>Answered</span></div>
+        <div class="stat"><b id="sRight">0</b><span id="sRightL">Correct</span></div>
+        <div class="stat"><b id="sPct">–</b><span>Score</span></div>
+      </div>
+      <div class="rail" id="rail" aria-label="Question navigator"></div>
+      <div class="legend"><span><i class="l-ok"></i><span id="lgOk">Correct</span></span><span><i class="l-no"></i><span id="lgNo">Missed</span></span><span><i></i>Not answered</span></div>
+    </div>
+  </section>
+
+  <footer>Passing score on the state exam is 75%. Your missed list is saved in this browser only.</footer>
+</div>
+
+<script>
+const CHS = [1,2,3,4,5];
+const CH = {1:"The Real Estate Business",2:"License Law & Qualifications",3:"License Law & Commission Rules",4:"Authorized Relationships",5:"Brokerage Activities & Procedures"};
+const Q = [
+// ---------- Chapter 1 ----------
+[1,"Which of the following statements is true regarding a mortgage loan originator?",["A mortgage loan originator is the same as a mortgage lender.","A mortgage loan originator must have a separate license.","A mortgage loan originator makes loans.","A mortgage loan originator must have a real estate license."],1,"Loan originators are licensed separately under F.S. 494. They take applications and negotiate terms; the lender is the one that actually funds the loan."],
+[1,"A real estate appraiser's fee for professional service is based on which of the following?",["A percentage of the property's gross income","A percentage of the fair market value of the property","The time and difficulty of the appraisal","A percentage of the property's sales price"],2,"Basing the fee on value or price would give the appraiser a stake in the result. The fee reflects the work involved."],
+[1,"Which of the following best describes the real estate brokerage business?",["Service business","Simple business","Business with few opportunities available","Construction business"],0,"Brokers sell a service: bringing buyers and sellers together. They don't produce a product."],
+[1,"When a developer completes construction of a new subdivision, all streets, electric, water, and sewer installation are finished and deeded to the city or county. What is this process called?",["A quit claim deed","An easement","Annexation","Dedication"],3,"Dedication is giving private land or improvements to the public for public use."],
+[1,"All of the following are responsibilities of a property manager, EXCEPT:",["Renting property for an absentee owner","Collecting rent","Overseeing maintenance","Preparing leases"],3,"Renting, collecting rent and maintenance are core property-management work. Drafting a lease from scratch is legal work for an attorney."],
+[1,"What does the term \"farming\" refer to in real estate?",["Specializing in one geographic area","Working in a cooperative manner","Specializing in agricultural properties","Specializing in the sales of orange groves or cattle farms"],0,"Farming means working one neighborhood or area so you become the go-to agent there."],
+[1,"Which insurance policies can a real estate licensee offer to the public without additional state licensing?",["Flood insurance","Fire insurance","Renter's insurance","None of the above"],3,"Selling any insurance requires a separate insurance license."],
+[1,"What is the purpose of the National Association of REALTORS?",["Preserve the right of individuals to own real property through an exchange of information","Organize antigovernment activities","Promote unethical practice of real estate professionals","Award unearned educational designations"],0,"NAR's mission is protecting the right to own property and sharing information among members."],
+[1,"What does the designation of REALTOR signify?",["Anyone in possession of a real estate license is a REALTOR.","The designation identifies the real estate professional as a member of NAR.","The designation is evidence that the licensee has an extensive background in the real estate profession.","The designation is evidence that the licensee has completed extensive real estate studies."],1,"REALTOR is a trademark that means NAR membership. It says nothing about experience or education."],
+[1,"A developer contracts to build a home according to the buyer's specifications. This is an example of which type of building?",["Tract","Custom","Speculative","Subdivision"],1,"Built to a specific buyer's specs is custom. Speculative is built before a buyer exists."],
+[1,"The federal, state, and local governments all play a role in the regulation of real estate. In which of the following areas would the local government have the most impact?",["Property taxes, building moratoriums, and zoning","Primary and secondary mortgage markets","Documentary stamp taxes, intangible taxes, and note taxes","Civil rights enforcement and monetary policy"],0,"Counties and cities set zoning, building moratoriums and property taxes. Doc stamps are state; mortgage markets and monetary policy are federal."],
+[1,"Which of the following best describes licensees who are involved in business opportunity brokerage?",["They must be able to analyze financial statements and understand balance sheets.","They are not required to know much about the business they are selling.","They must have a separate license.","They never become involved in the tax aspects of the business."],0,"Selling a business means valuing it, so you need to read its financials. No separate license is required."],
+[1,"Real estate licensees are expected to be knowledgeable in all of the following areas, EXCEPT:",["Marketing","Valuation","Property transfer","Accounting"],3,"Marketing, valuation and property transfer are everyday licensee work. Accounting is a separate profession."],
+[1,"Which service provided by real estate licensees requires the most experience and knowledge?",["Property management","Counseling","Appraising","Agricultural sales"],1,"Counseling means giving expert advice across every area of real estate, so it takes the broadest experience."],
+[1,"An appraiser, who is registered, licensed, or certified under F.S. 475, Part II, must be utilized in which of the following?",["All appraisals","Comparative market analysis (CMA)","Broker price opinion (BPO)","Valuation in non-federally related transactions"],0,"Only a registered, licensed or certified appraiser may perform an \"appraisal.\" Licensees can still give CMAs and BPOs."],
+// ---------- Chapter 2 ----------
+[2,"In what year was the Florida Real Estate Commission created?",["1932","1925","1923","1919"],1,"FREC was created in 1925 to administer and enforce the license law. 1923 was the first Florida license law; 1919 was California's, the first in the nation."],
+[2,"What is the purpose of the real estate license law?",["To protect the public","To protect licensees","To clarify the law","To grant licenses"],0,"License law exists to protect the public from incompetent or dishonest practitioners."],
+[2,"Why was the Florida Real Estate Commission created?",["To protect the public","To administer and enforce the law","To discipline licensees","To award professional designations"],1,"The license law exists to protect the public, but the Commission itself was created in 1925 to administer and enforce that law, so violations no longer had to go through the courts."],
+[2,"A sales associate failed to complete the required post-license education prior to renewal. What is the status of the license?",["Revoked","Suspended","Involuntarily inactive","Void"],3,"A sales associate who misses post-license education has a null and void license. They would have to start over."],
+[2,"What does the registration of an active sales associate with the Department refer to?",["Placing and keeping on record the sales associate's name and home address","Placing and keeping on record the sales associate's name, home address, and business address of their employing broker","The broker's name and business address","Placing and keeping on record the sales associate's name and the business address of their employer"],1,"Registration records the licensee's name, home address and the employing broker's business address."],
+[2,"How may a licensed sales associate be paid by their owner-developer?",["On a salary basis only","On a commission basis only","On a commission basis without a bonus","On a commission or salary basis"],3,"A sales associate registered with an owner-developer can be paid salary or commission."],
+[2,"What are the minimum employment requirements for a licensed sales associate to qualify for a real estate broker's license?",["Employed for 6 months under one actively licensed broker","Employed for 12 months under one actively licensed broker","Employed for 24 months under one or more actively licensed brokers","Employed for 6 months under one or more actively licensed brokers"],2,"24 months active as a sales associate under one or more brokers, within the 5 years before applying."],
+[2,"How many hours of post-license education are required to renew a broker license?",["14","30","45","60"],3,"Brokers need 60 hours post-license. Sales associates need 45."],
+[2,"All of the following services require a real estate license, EXCEPT:",["Leasing","Mortgaging","Buying","Selling"],1,"Mortgage activity is licensed under F.S. 494, not 475."],
+[2,"All of the following information appears on a Florida real estate license, EXCEPT:",["The seal of the state of Florida","An expiration date","The signature of the governor","The name of the secretary of Department of Business and Professional Regulation"],2,"The license shows the state seal, an expiration date and the DBPR secretary's name. The governor does not sign it."],
+[2,"What must an applicant for a real estate license do if they have been convicted of a crime?",["The applicant must disclose the crime only if it was a felony or resulted in jail time.","The applicant does not need to disclose it on the application unless there was an order of restitution.","The applicant must disclose all arrests and convictions.","The applicant must disclose all convictions on the application."],3,"Every conviction must be disclosed, including pleas of guilty or no contest and sealed records. Arrests alone are not required."],
+[2,"Which condition must exist for an applicant to qualify for a Florida real estate license?",["The applicant must be a citizen of the United States.","The applicant must be a Florida resident.","The applicant must be at least 21 years of age.","The applicant must have a high school education or equivalent."],3,"Requirements are age 18, a high school diploma or equivalent, and honesty and good character. Citizenship and residency are not required."],
+[2,"Which of the following statements best describes an attorney-in-fact?",["An attorney-in-fact must be a member of the Florida Bar.","An attorney-in-fact may be paid a commission for services of real estate.","An attorney-in-fact is authorized by a power of attorney to act for another.","An attorney-in-fact is required to hold an active real estate license."],2,"An attorney-in-fact is anyone holding a power of attorney. They don't need to be a lawyer and can't take a commission."],
+[2,"Which individual is exempt from the licensing requirements of Florida Statute 475?",["A partner in a real estate partnership who receives compensation in excess of their interest in the partnership for performance of real estate services on behalf of the partnership","A condominium manager who is paid on a commission basis for rentals of less than one year","An appraiser who is certified under Florida Statute 475, Part II, when performing brokerage services","An attorney who performs legal duties in connection with a real estate transaction"],3,"Attorneys doing legal work are exempt. The partner is paid beyond their share, the condo manager is paid commission, and the appraiser is doing brokerage, so none of them are exempt."],
+[2,"Complete this statement. An actively licensed attorney who is a member in good standing with the Florida Bar ______.",["May charge commissions in connection with real estate activities","Is exempt from continuing education requirements to maintain a real estate license","Is not allowed to simultaneously hold a real estate license","May be licensed as a broker but not as a sales associate"],1,"Florida Bar members who hold a real estate license are exempt from the continuing education requirement."],
+[2,"What is a broker associate?",["A broker who employs sales associates","A sales associate","A broker who is employed as a sales associate","A sales associate who is employed as a broker"],2,"A broker associate holds a broker license but works under another broker, the way a sales associate does."],
+[2,"Florida has an agreement with some other states that recognizes the similarity in education and experience requirements for licensees. What is the agreement called?",["Reciprocity","Mutual recognition","Cooperative licensure","Intrastate licensing"],1,"Florida uses mutual recognition agreements. Applicants from those states take a 40-question Florida law exam."],
+[2,"Which of the following statements is true regarding a plumber who has been appointed by a court to appraise a small business?",["The plumber is in violation of F.S. 475.","The plumber may charge a commission.","The plumber may do so and be paid a fee.","The plumber must first be licensed under F.S. 475, Part II."],2,"Anyone appointed by a court is exempt and may be paid a fee."],
+[2,"All of the following individuals are exempt from the real estate license law, EXCEPT:",["Employees of a corporation who are paid on a salary basis","Partners in a partnership who receive a pro rata share of the profits","Condominium managers who rent units within the complex for periods up to one year","Funeral directors performing duties of real estate for compensation"],3,"Funeral directors have no exemption. Doing real estate work for pay requires a license."],
+[2,"A Georgia broker with extensive experience in conducting auctions was asked by a local real estate broker to auction a small motel in Jacksonville. The auction did not result in a sale. The Florida broker paid the Georgia broker for out-of-pocket expenses, but did not pay a commission. Which of the following statements is correct?",["The Georgia broker violated license law.","The Florida broker did not violate license law.","The Florida broker is not subject to discipline by the Commission.","The transaction is perfectly within the license law."],0,"Auctioning Florida real estate in expectation of compensation requires a Florida license. Not getting paid does not cure it, and the Florida broker also violated the law by using an unlicensed person."],
+// ---------- Chapter 3 ----------
+[3,"The Department of Business and Professional Regulation has the authority to issue all of the following, EXCEPT:",["A cease-and-desist order","A subpoena","An injunction","A notice of noncompliance"],2,"Only a court issues an injunction. DBPR can go to court to ask for one."],
+[3,"What is the maximum number of years a member may serve on the Florida Real Estate Commission?",["4","8","12","No maximum"],3,"Members serve 4-year terms and may not serve more than two consecutive terms, but there is no maximum number of years overall."],
+[3,"Which statement is true regarding the secretary of the Department of Business and Professional Regulation?",["The secretary is a member of the Florida Real Estate Commission.","The secretary is appointed by the governor.","The secretary must be an attorney.","The secretary answers to the state legislature in the performance of duties."],1,"The governor appoints the DBPR secretary, with Senate confirmation."],
+[3,"The Division of Real Estate is an administrative part of which of the following?",["The state of Florida","The Department of Commerce","The Department of Banking","The Department of Business and Professional Regulation"],3,"The Division of Real Estate sits inside DBPR."],
+[3,"Which statement is true regarding examination questions and answers?",["They are published in the Administrative Weekly before appearing in an examination.","They may not be challenged.","They may be reviewed by any member of the public upon request.","They are confidential."],3,"Exam questions and answers are confidential. Applicants can still challenge a question through the proper process."],
+[3,"Which of the following entities issues real estate licenses?",["The state of Florida","The Department of Business and Professional Regulation","The Department of Revenue","The Florida Real Estate Commission"],1,"FREC decides who qualifies. DBPR actually issues the license."],
+[3,"After being active in the real estate business for over five years, a licensee's license expired on September 30th. What is the status of the license on October 1st?",["Suspended","Revoked","Involuntary inactive","Voluntary inactive"],2,"A license that isn't renewed goes involuntary inactive. After 2 years in that status it becomes null and void."],
+[3,"The Florida Real Estate Commission held a meeting for the purpose of passing a new rule. This is an exercise of which Commission power?",["Executive","Quasi-legislative","Quasi-judicial","Ministerial"],1,"Making rules is quasi-legislative. Deciding discipline cases is quasi-judicial."],
+[3,"Which of the following statements is true regarding the director of the Division of Real Estate?",["The director is appointed by the secretary of the Department of Business and Professional Regulation.","The director is a member of the Florida Real Estate Commission.","The director is not subject to confirmation or approval by the Florida Real Estate Commission.","The director answers only to the governor in the performance of their duties."],0,"The DBPR secretary appoints the director, subject to FREC approval."],
+[3,"The Department of Business and Professional Regulation is created by which statute?",["F.S. 120","F.S. 455","F.S. 475","F.S. 494"],1,"F.S. 455 covers DBPR. 475 is real estate, 120 is administrative procedure, 494 is mortgage."],
+[3,"If an applicant for a real estate license provides false information, they commit which of the following criminal violations?",["First-degree misdemeanor","Second-degree misdemeanor","Second-degree felony","Third-degree felony"],3,"Giving false information to get a license is a third-degree felony."],
+[3,"What action may the Department take if it determines that an unlicensed person has operated in violation of a law or rule under its administration?",["None, since the Department has no jurisdiction over unlicensed individuals.","It may issue an injunction prohibiting such activity in the future.","It may imprison the violator for up to five years.","An administrative fine of up to $5,000 may be imposed."],3,"DBPR can fine unlicensed activity up to $5,000 per offense. It cannot imprison anyone or issue an injunction itself."],
+[3,"Educational requirements of applicants for a real estate license are promulgated under what authority of the Florida Real Estate Commission?",["Ministerial","Executive","Quasi-legislative","Quasi-judicial"],2,"Setting education requirements is rulemaking, which is quasi-legislative."],
+[3,"When is a request for the renewal of a license effective?",["When received by the Department","The day following expiration","On the date the application is mailed","On the date indicated on the license"],0,"A renewal request takes effect when DBPR receives it."],
+[3,"When does a real estate license expire?",["On the date shown on the license","Every two years","On the effective date","At the end of one year"],0,"A license expires on the date printed on it, either March 31 or September 30."],
+[3,"New Commission rules must be approved by which of the following?",["The Department of Business and Professional Regulation","The secretary of state","The governor","No one"],3,"FREC adopts its own rules without anyone else signing off."],
+[3,"How long may a license remain in voluntary inactive status?",["Two years","Four years","Ten years","Indefinitely"],3,"A voluntarily inactive license can stay that way as long as it keeps getting renewed."],
+[3,"Which of the following best describes certificates that are entered into court as evidence?",["Of no value","Disqualified","Prima facie evidence","Proof of a fact"],2,"DBPR certificates count as prima facie evidence: accepted as true unless someone disproves them."],
+[3,"Violations of the Commission rules are prosecuted by which agency?",["Florida BAR Association","Department of Business and Professional Regulation","Florida State Attorney General","Sheriff of the county in which the violation occurred"],1,"DBPR investigates and prosecutes rule violations. FREC hears the case and decides."],
+[3,"A sales associate is employed by a broker Monday through Friday and for a builder on the weekends. The sales associate feels the added experience is beneficial especially since both employers pay an attractive commission split. Which statement is correct?",["The sales associate must obtain a group license.","Multiple licenses are required in this situation.","This arrangement violates the license law.","This is permissible if both employers agree to the arrangement."],2,"A sales associate can be registered with only one employer at a time."],
+// ---------- Chapter 4 ----------
+[4,"Who owes fiduciary duties in a single agency relationship?",["The broker only","The principal only","Both parties","Neither party"],0,"The agent (broker) owes fiduciary duties to the principal. It doesn't run the other way."],
+[4,"All of the following activities are exempt from the requirement to provide disclosures under the Brokerage Relationship Disclosure Act, EXCEPT:",["Sales staff at a new development center","Showing property to a party that is not being represented","A bona fide open house or model home showing that does not involve eliciting confidential information, the execution of a contractual offer or an agreement for representation, or negotiations concerning price terms, or conditions of a potential sale","Responding to general factual questions from a potential buyer or seller concerning properties that have been advertised for sale"],1,"Showing property to an unrepresented buyer is real brokerage work, so the disclosure is required."],
+[4,"As an agent, a broker is employed by and acts on behalf of whom?",["A buyer","A seller","A customer","A principal"],3,"The principal is the person who hires the agent. That can be a buyer or a seller; a customer is the other party."],
+[4,"In which of the following situations does a general agency relationship exist?",["When a broker is employed to market a property","When a sales associate is working with a customer","When a sales associate is employed by a broker","When a broker is employed by a buyer"],2,"A sales associate can do many tasks for their broker, which makes it general agency. Marketing one property is special agency."],
+[4,"Broker Joan just received an oral offer to purchase a listed property. No earnest money accompanied the oral offer. Which of the following statements is correct?",["Joan must present the offer.","Joan should not present the offer since no earnest money deposit was received.","Joan must advise the customer that an earnest money deposit is required to make an offer valid.","Joan should reject the offer on behalf of the seller."],0,"Every offer must be presented to the seller, oral or written, with or without a deposit."],
+[4,"Which of the following statements best describes a transaction broker?",["A transaction broker is an agent of both parties.","A transaction broker has fiduciary duties to the seller.","A transaction broker has fiduciary duties to the buyer.","A transaction broker may provide limited representation to both parties."],3,"A transaction broker gives limited representation to one or both parties and is not a fiduciary."],
+[4,"An agent failed to advise a principal regarding the value of the owner's property prior to accepting a listing. Which fiduciary duty did the agent breach?",["Loyalty","Disclosure","Accounting","Obedience"],1,"The agent must disclose everything that affects the principal's interests, including the property's value."],
+[4,"What is an agent required to do in an agency relationship?",["Obtain the highest price possible.","Attempt to obtain the most favorable price and terms on behalf of the principal.","Obtain the lowest price possible.","Negotiate the transaction to receive the highest possible commission."],1,"The duty is to try for the best price and terms for the principal. No agent can guarantee a result."],
+[4,"When can an agent disclose confidential or harmful information about a principal?",["At any time","During the fiduciary relationship period only","After the transaction is completed and the fiduciary relationship is over","Never"],3,"Confidentiality continues after the relationship ends, unless the principal permits it or the law requires it."],
+[4,"Each of the following is contained in the definition of a residential transaction, EXCEPT:",["Unimproved property intended for four units or fewer","Agricultural properties of ten acres or less","Leases with options to purchase all or a portion of improved property of four or fewer residential units","Dispositions of business interests involving property of five or more residential units"],3,"Residential means 1–4 units, vacant land for 1–4 units, or agricultural land of 10 acres or less. Five or more units is not residential."],
+[4,"All of the following provide control of agency relationships, EXCEPT:",["F.S. 475","Common law","The Brokerage Relationship Disclosure Act","The Department of Financial Services"],3,"Agency is governed by F.S. 475, the Disclosure Act and common law. Financial Services has no role."],
+[4,"Which of the following statements best describes policy and procedures manuals?",["Policy and procedures manuals are maintained by all real estate offices.","Policy and procedures manuals are required by law.","Policy and procedures manuals are a major cause of arguments.","Policy and procedures manuals are useful in maintaining good relations within a brokerage office."],3,"They aren't required, but they set expectations and prevent disputes inside the office."],
+[4,"A broker has appointed two sales associates to act as agents in a nonresidential transaction, one for the seller and one for the buyer. Which statement is correct?",["This is an illegal dual agency.","The sales associates are referred to as designated sales associates.","Buyer and seller must have combined assets of $1 million.","The FREC will revoke the licenses of the broker and both sales associates."],1,"In nonresidential deals a broker can designate one associate for each side. Each party must have assets of $1 million or more (each, not combined)."],
+[4,"Each of the following relationships is adversarial, EXCEPT:",["Arm's length","Buyer beware","Caveat emptor","Fiduciary"],3,"A fiduciary relationship is one of trust. The other three describe parties on opposite sides."],
+[4,"In which circumstance are licensees expected to act with fairness and honesty?",["Single agency only","Transaction brokerage only","Nonrepresentation only","Any real estate transaction"],3,"Honesty and fair dealing are owed in every relationship, including no brokerage relationship."],
+[4,"According to the Brokerage Relationship Disclosure Act, which is the only brokerage relationship form that must be signed or initialed?",["Single Agency Disclosure","Transaction Broker Disclosure","Consent to Transition to Transaction Broker","Important Information Disclosure"],2,"The principal must sign or initial the Consent to Transition before the broker changes from single agent to transaction broker."],
+[4,"Which of the following statements is correct regarding a broker's authority to act on behalf of the principal?",["A broker can refuse offers on behalf of the principal.","A broker can buy the listed property without consent of the principal.","A broker must follow all legal instructions of the principal or withdraw.","A broker must ignore the instructions of a principal when the instructions are not in the best interests of the principal."],2,"Obedience means following all lawful instructions. If the broker can't, they withdraw."]
+].map((r,i)=>({id:i,ch:r[0],q:r[1],o:r[2],a:r[3],why:r[4]}));
+// number within chapter
+{const c={};Q.forEach(x=>{c[x.ch]=(c[x.ch]||0)+1;x.num=c[x.ch];});}
+
+// ---------- Flashcard decks ----------
+// One deck per chapter. Each card: [front, back] or [front, back, note].
+// A chapter with an empty deck uses its practice questions as cards until real cards are added.
+const DECKS = {
+  1: [
+    ["Real estate brokerage", "A business in which a broker acts as an agent or intermediary between two or more people in the sale, purchase or rental of real estate, for compensation.", "Main activities: marketing, property transfer, market conditions and valuation."],
+    ["Absentee owner", "Someone who buys income property as an investment and depends on professionals to manage it.", "These professionals are property managers."],
+    ["Property management", "Managing income property for owners while maximizing the profitability of the investment.", "Absentee ownership is a big reason property management keeps growing."],
+    ["Property manager", "Locates tenants, collects rent, and handles payment of taxes, insurance and other expenses.", "Paid a percentage of the rents collected. Does NOT write leases, but may assist with attorney-prepared leases."],
+    ["Community association manager (CAM)", "A property manager working for a community association needs a CAM license when the association has more than 10 units or an annual budget over $100,000.", "F.S. 468.431(2)"],
+    ["Business broker", "A real estate broker who specializes in the listing and sale of businesses.", "Must be able to analyze financial statements and understand balance sheets. No separate license needed."],
+    ["Business opportunity", "The sale of a business, which includes going concern value in addition to the real property.", ""],
+    ["Going concern value", "The value of a business as an operating company: its income, tangible and intangible assets, goodwill and property value.", ""],
+    ["Appraisal", "Developing an independent, impartial and objective analysis or opinion of the value of real property.", "Appraisal fees are based on the time, effort and expense involved, never on the property's value."],
+    ["Appraiser", "A person who develops appraisals. Must be registered, licensed or certified under F.S. 475, Part II.", "Appraisers must follow USPAP."],
+    ["Comparative market analysis (CMA)", "A value estimate a licensee prepares from recent sales of similar properties in the same neighborhood.", "It uses many appraisal concepts but may NOT be called an appraisal."],
+    ["Broker price opinion (BPO)", "A licensee's estimate of a property's likely selling price, often ordered by a lender in a short sale.", "Real estate licensees may be asked to complete a BPO. Less thorough than an appraisal, but more analysis than a basic CMA."],
+    ["FIRREA", "Financial Institutions Reform, Recovery, and Enforcement Act of 1989.", "Title XI requires appraisals in federally related transactions to be done by state licensed or certified appraisers."],
+    ["USPAP", "Uniform Standards of Professional Appraisal Practice, developed by the Appraisal Foundation.", "All appraisals, federally related or not, must be prepared in compliance with USPAP."],
+    ["Federally related transaction", "A transaction in which a federally regulated lending institution makes a loan secured by real property.", "Requires an appraisal by a licensed or certified appraiser."],
+    ["Counseling", "Analyzing existing or potential projects and giving expert advice, usually for a flat fee.", "Requires the highest level of knowledge and experience of any real estate service."],
+    ["Farm area (target market)", "Concentrating on one neighborhood, or on one type or style of property.", "Called farming. Considered one of the best ways to succeed in real estate."],
+    ["Multiple listing service (MLS)", "A marketing tool that puts your listings in front of thousands of other licensees, with a detailed database of properties for sale or lease.", "Access usually comes with local REALTOR association membership."],
+    ["Follow-up", "Staying in touch with past customers to earn referrals and repeat business.", "Contact them at least twice a year: the anniversary of their purchase, flyers, notes or postcards with your name, photo and contact info."],
+    ["Residential transaction", "Sale of improved residential property of 4 units or fewer, unimproved land intended for 4 units or fewer, or agricultural property of 10 acres or less.", "Also leases with an option to buy 4 or fewer units, and business interests in property of 4 or fewer units. F.S. 475.278(5)(a). Most licensees work in residential."],
+    ["Agricultural sales", "Sales of farm and ranch property.", "Two common characteristics: large amounts of land and large sums of money."],
+    ["Mortgage loan originator (MLO)", "An individual or business that arranges loans between lenders and borrowers. They do NOT make loans.", "Must have a separate license issued by the Florida Department of Financial Services (FDFS)."],
+    ["Where can mortgage loans be obtained?", "Mortgage companies, commercial banks, savings and loans, credit unions, life insurance companies, trusts and individuals.", "Marked as a test question in your notes."],
+    ["Property insurance", "A separate license is required to sell insurance.", "Property in a flood hazard area must have flood insurance to qualify as security for a loan."],
+    ["Three phases of development and construction", "1. Land acquisition\n2. Subdividing and development\n3. Construction", "The subdivision plat map gets recorded during subdividing."],
+    ["Subdivision plat map", "Map of a subdivision showing named streets and numbered blocks and lots, recorded once approved by the city or county.", "Building permits cannot be issued until the plat is part of the public record."],
+    ["Dedication", "Ownership of the streets and sidewalks is conveyed from the developer to the city or county.", ""],
+    ["Custom building", "Built to the customer's specifications.", "Know the definitions and examples of all three building types for the test."],
+    ["Speculative building", "Built before a buyer is secured.", ""],
+    ["Tract building", "A developer acquires a large tract of land, records a subdivision plat map, and uses a model center to sell.", ""],
+    ["National Association of REALTORS (NAR)", "The nation's largest trade and professional association. Goal: preserving the right of individuals to own real property through an exchange of information.", "Members agree to follow a strict Code of Ethics."],
+    ["REALTOR", "A registered trademark that may be used only by members of NAR.", "Having a license does not make someone a REALTOR."],
+    ["Florida REALTORS (FAR)", "The Florida Association of REALTORS, the largest trade association in the state.", "Offers legal advice, forms, market studies, technology and education to members."],
+    ["Local Board (Association) of REALTORS", "Joining a local board also gives membership in FAR and NAR.", "If a broker is a member, all of their sales associates must also join. Non-members may not call themselves REALTORS and don't get MLS access."],
+    ["Role of government: local level", "Planning and zoning, property taxation, building and health codes, and building moratoriums.", "Marked as on the test in your notes."],
+    ["Role of government: state level", "Developments of Regional Impact (DRI), DEP and DEO; roads, waterways and multi-county issues.", "The state can offer opportunities like tax reductions."],
+    ["Role of government: federal level", "Legislation and policy, especially lending. The Federal Reserve's monetary policy has a daily effect on real estate.", ""]
+  ],
+  2: [
+    ["Purpose of the license law (F.S. 475)", "To protect the public.", "F.S. 475 is the Florida Real Estate License Law. Your note: 475 = protect the public."],
+    ["Caveat emptor", "\"Let the buyer beware.\" Before license laws, there was no warranty that a property was fit for ordinary use.", "The exception was fraud: if the seller actively concealed defects or made material misrepresentations."],
+    ["1919", "California enacted the first real estate license law.", "Your note: important. 1919 is the first real estate license law."],
+    ["1923", "Florida enacted its first real estate license law.", "It didn't work well: violations had to be pursued in the courts, which was slow and expensive."],
+    ["1925", "The Florida Real Estate Commission (FREC) was created to administer and enforce the law.", "This removed the need for court enforcement."],
+    ["1941", "The Real Estate License Law was officially designated Chapter 475 of the Florida Statutes.", ""],
+    ["1979 and 1982", "1979: the Commission was renamed the Board of Real Estate and placed under the new Department of Professional Regulation (DPR).\n1982: a Division of Real Estate was created and the name Florida Real Estate Commission was restored.", ""],
+    ["1991", "F.S. 475 was split into Part I (real estate licensees) and Part II (appraisers).", "Part II created the Florida Real Estate Appraisal Board (FREAB) for appraisers in federally related transactions."],
+    ["1993", "The Department of Professional Regulation and the Department of Business Regulation were combined into the Department of Business and Professional Regulation (DBPR).", "New disclosure requirements were also added to F.S. 475 that year."],
+    ["FREC", "Florida Real Estate Commission. Called \"the Commission.\"", ""],
+    ["DBPR", "Department of Business and Professional Regulation. Called \"the Department.\"", "The Division of Real Estate (DRE) sits inside DBPR."],
+    ["License / Licensee", "License: any permit, registration, certificate or license issued by the Department.\nLicensee: any person who has been issued one.", ""],
+    ["When is a real estate license required?", "When ALL four are present:\n1. Performing a service of real estate\n2. In the state of Florida\n3. For another\n4. For compensation", "Unless the person is exempt under the law."],
+    ["Compensation", "Anything of value paid, received, expected to be paid, or expected to be received in exchange for a service.", "Even an expected payment counts."],
+    ["\"A BAR SALE\"", "The most common services of real estate:\nAppraising\nBuying, Auctioning, Renting\nSelling, Advertising, Leasing, Exchanging", "Others: business brokerage, listing, property management, syndicating, timeshares, counseling."],
+    ["Auctioning real estate", "Real estate licensees may auction real estate without a separate auctioneer's license.", "Using by-bidders to drive up the price (with no intent to buy) is illegal."],
+    ["Exemptions", "F.S. 475.011 lists persons and entities that may perform real estate services for compensation without a license.", "Examples: attorneys doing legal work, court-appointed people, salaried employees, condo managers for rentals under one year."],
+    ["Sales associate", "Someone new to real estate who completes the pre-license requirements and must be employed by a real estate broker or owner-developer.", "Sales associates are NEVER paid directly by a customer. They are paid only by their employing broker."],
+    ["Broker", "A person who performs real estate services for another and receives compensation for them.", "May open an office and hire sales associates and broker associates."],
+    ["Broker associate", "Someone who holds a broker license but chooses to work under another broker, in a sales associate capacity.", ""],
+    ["Education requirements: sales associate vs broker", "Sales associate: pre-license, then post-license, then biennial continuing education.\nBroker: their own broker pre-license and post-license, then biennial CE.", "Biennial = every two years."],
+    ["Experience to apply for a broker license", "Active sales associate for at least 24 months, under one or more brokers, within the 5 years before applying.", "Working for an owner-developer does NOT count."],
+    ["Other ways to qualify for a broker license", "Licensed for 24 months in another state or nation within the last 5 years; salaried government employees doing real estate work for 24 months within 5 years; DBPR investigators with 24 months of experience.", "F.A.C. 61J2-2.027(1)(b)"],
+    ["General qualifications for licensure", "Social Security number, at least 18 years old, high school diploma or equivalent, honest, truthful, trustworthy and of good character.", "F.S. 475.17(1)"],
+    ["Must you be a Florida resident or U.S. citizen?", "No. Neither is required for a Florida real estate license.", "F.S. 455.10"],
+    ["Three licensing phases", "1. Pre-licensing\n2. Post-licensing\n3. Continuing education", ""],
+    ["Pre-licensing steps", "1. Pass the course final exam with 70% or higher\n2. Submit the application and fee\n3. Submit electronic fingerprints\n4. Pass the state exam with 75% or higher (inactive license)\n5. File employment (active license)", ""],
+    ["Mutual recognition", "Agreements between Florida and a few states that recognize similar education and experience requirements.", "Applicants skip pre-licensing and take a 40-question Florida law exam (75%, or 30 correct). This is NOT reciprocity. Florida has no reciprocity."],
+    ["Mutual recognition states", "Alabama, Arkansas, Connecticut, Georgia, Illinois, Kentucky, Mississippi, Nebraska, Rhode Island and West Virginia.", "Check the DBPR website for the current list."],
+    ["Nonresident licensees", "Must take all post-license and continuing education, the same as Florida licensees.", ""],
+    ["Florida resident (for mutual recognition)", "Anyone who has lived in Florida 4 months or more in the past year, or currently lives here intending to stay 4 months or more.", "An RV, hotel or rental unit counts as a residence."],
+    ["Initial license application", "Form DBPR RE 1, submitted online with the fee.", "The same form is used for Florida residents, nonresidents and mutual recognition applicants."],
+    ["Electronic fingerprints", "Required for all applicants. Sent to the Florida Department of Law Enforcement (FDLE) and the FBI.", "Kept for 12 months. If they expire before you apply, you must submit new ones."],
+    ["Background question 1", "Have you ever been convicted or found guilty of, or pled guilty or nolo contendere to, a crime, regardless of adjudication?", "Disclose ALL convictions, felony or misdemeanor. Only minor traffic offenses are left out. DUI is not a minor traffic offense."],
+    ["Nolo contendere", "A plea of no contest.", "It must be disclosed on the application."],
+    ["Adjudication withheld", "A sentence such as probation, community service or a fine is imposed, but there is no formal conviction.", "It must still be disclosed."],
+    ["Expunge", "To have criminal records removed by a court. The defendant must petition the court; it isn't automatic.", "Saying \"I thought it was expunged\" is not a valid excuse for leaving an offense off the application."],
+    ["Affirmation by written declaration", "The applicant affirms, under penalty of perjury, that every fact on the application is true.", "False information can lead to criminal penalties, fines, suspension or revocation."],
+    ["Application review timeline", "DBPR has 30 days to review an application for errors or omissions, and must approve or deny it within 90 days of a complete application.", "F.S. 120.60. Your note: 30 days to review, 90 days to approve or deny."],
+    ["Application denied for a minor error", "It is denied \"without prejudice\" and returned for correction.", "Falsifying the application can make the candidate ineligible for a license."],
+    ["Owner-developer", "A person or company that owns property and employs sales associates to sell or rent its own property.", "May pay its sales associates salary or commission. It doesn't count toward broker experience."],
+    ["Application approval", "Once approved, the applicant must pass the state exam within 2 years.", "Otherwise they must file a new application. F.S. 475.181(2)"],
+    ["Application denial", "The applicant is notified in writing with the reasons, and has 21 days to request a formal hearing before an administrative law judge.", "Under F.S. 120, the Administrative Procedure Act."],
+    ["Fee waiver for military veterans and spouses", "DBPR waives the initial licensing fee, application fee and unlicensed activity fee.", "Apply within 60 months after an honorable discharge. F.S. 455.213(13)"],
+    ["Active-duty service members and spouses", "DBPR issues a professional license to active-duty members, or their spouses, who hold the same license in another state or U.S. territory.", "The initial application fee is waived, but exam fees are not."],
+    ["Sales associate pre-license course (FREC I)", "63 hours including the final exam: real estate principles, practices, basic real estate law and license law.", "Pass the timed 100-question final with 70% or higher. The course completion certificate is good for 2 years."],
+    ["Who is exempt from the pre-license course?", "Anyone with a four-year degree in real estate from an accredited college or university.", "Your note: a 4-year degree in real estate will exempt you."],
+    ["Florida attorneys and education", "Exempt from the 63-hour pre-license course and from continuing education. NOT exempt from post-license.", "They still have to take the state exam, with a copy of their Florida Bar card."],
+    ["Pre-license classroom attendance", "Missing more than 8 classroom hours disqualifies the student from the final exam.", "Missed hours must be made up, and the final taken, within 30 days of the original exam date."],
+    ["Failing the course final exam", "The student may take an alternate final after waiting at least 30 days, within one year of the original exam.", "Failing the alternate means retaking the whole course."],
+    ["Broker pre-license course (FREC II)", "72 hours including the final exam.", "Pass with 70% or higher."],
+    ["State license exam", "100 multiple-choice questions: 45 on license law, 45 on principles and practices, 10 on math.", "Pass with 75% (75 correct). Results are pass/fail only and the questions are confidential."],
+    ["After passing the state exam", "The applicant gets an inactive license.", "To be active, a sales associate must be employed by a broker or owner-developer and register that employment with DBPR."],
+    ["Failing the state exam", "The applicant gets a score breakdown by category and can schedule a review of the missed questions.", "Any challenge must be written during the scheduled review."],
+    ["Exam in a foreign language", "Given in the applicant's native language only if 15 or more applicants request it.", "The full cost is paid by those applicants. F.S. 455.11"],
+    ["Who can a sales associate work for?", "Only ONE broker or owner-developer at a time, and only that employer may pay them.", "Your note: a sales associate may only be employed under one broker."],
+    ["Owner-developer and unlicensed salespeople", "An owner-developer can use unlicensed salespeople to sell its own property if they're paid a salary.", "If it pays commissions or transaction fees, it must hire licensees."],
+    ["Change of status form", "Form DBPR RE 11. A newly licensed sales associate can't practice until it's filed to activate the license.", "The testing service's letter acts as a temporary license until the real one arrives."],
+    ["Registration vs licensure", "Licensure: the granting of a license to practice.\nRegistration: keeping on record the name and address of an individual or business.", "Individuals are licensed AND registered. Businesses are registered only. DRE keeps the registration list."],
+    ["What's on a Florida real estate license?", "Licensee's name and address, license type, effective date, expiration date, the state seal, the governor's name and the DBPR secretary's name.", "No signatures! Possession of a license is prima facie evidence that the holder is licensed."],
+    ["Sales associate first renewal", "Complete the 45-hour post-license course before the initial license expires.", "Miss it and the license is VOID. To come back: take the 63-hour course and pass the state exam again."],
+    ["Broker first renewal", "Complete 60 hours of post-license education before the initial license expires.", "Miss it and the license is void. They can revert to an active sales associate by taking a 14-hour CE course within 6 months."],
+    ["Post-license requirements", "Sales associate: 45 hours, pass with 75% or higher.\nBroker: 60 hours, pass with 75% or higher.", "No state exam. The course provider reports completion to DBPR."],
+    ["Pre-license vs post-license scores", "Sales associate: 63 hours at 70%, then 45 hours at 75%.\nBroker: 72 hours at 70%, then 60 hours at 75%.", ""],
+    ["Post-license classroom attendance", "Missing more than 10% of the instruction means you can't take the final exam.", "Make up the hours and take the final within 30 days."],
+    ["Continuing education (CE) hours", "14 hours every 2-year renewal after the first renewal, for brokers and sales associates, active or inactive.", "Miss it and the license goes involuntary inactive. Distance courses need 80% or higher on a 30-question exam. Ignorance of the requirements is no excuse."],
+    ["Keeping course certificates", "Keep pre-license, post-license and CE certificates for at least 2 years.", "DBPR can audit. A licensee whose courses weren't reported can't renew."],
+    ["Attorneys-at-law (exemption)", "May perform legal services for clients: prepare documents, handle closings, give legal advice.", "They may NOT receive sales commissions or referral fees without a real estate license."],
+    ["Attorneys-in-fact (exemption)", "People given authority under a power of attorney to act for someone else, such as signing documents.", ""],
+    ["Certified public accountants (exemption)", "May do accounting work for clients, prepare documents and handle closings.", "May NOT receive sales commissions or referral fees without a license."],
+    ["Court appointees (exemption)", "Trustees, receivers, masters in chancery and court-appointed appraisers.", "May be paid a fee or salary, but not a commission."],
+    ["Salaried employees of certain entities (exemption)", "Employees of government agencies, railroads, rural electric cooperatives and public utilities doing real estate work for their employer.", ""],
+    ["Salaried apartment employees (exemption)", "Employees working in an apartment community's onsite rental office.", "A tenant can receive up to $50 for referring a new tenant to the same complex."],
+    ["Individuals (exemption)", "May buy, sell or perform real estate services for themselves without a license.", ""],
+    ["Partners in a partnership (exemption)", "Exempt when each partner gets a pro rata share of profits based on their ownership.", "If any partner gets more than their ownership share, ALL the partners violate the license law."],
+    ["Corporations (exemption)", "Corporations that sell, exchange or lease their own real property.", ""],
+    ["Salaried employees of owners (exemption)", "Salaried employees may perform real estate services for their employer.", "Any bonus, commission or transaction pay beyond salary requires a license."],
+    ["Personal property dealers (exemption)", "People who deal only in personal property transactions.", "Mortgages are personal property, but dealing in them needs a mortgage loan originator license."],
+    ["Other exemptions", "Cemetery lot salespersons; renting a mobile home lot or recreational lot in a mobile home park or travel park.", ""],
+    ["Salaried condo/co-op managers (exemption)", "Exempt when renting units within their complex for periods of no more than one year.", ""],
+    ["Radio, TV and cable employees (exemption)", "May handle real estate tied to the FCC license.", "If the transaction includes physical land or buildings, a broker is needed for that part."],
+    ["Graduate appraising students (exemption)", "Full-time graduate students in an approved appraising degree program, under a licensed or certified appraiser.", "Reports are issued in the supervising appraiser's name."],
+    ["Timeshares (exemption)", "Owners reselling timeshare periods they bought for their own use, and timeshare exchange companies following F.S. 721.18.", ""],
+    ["Appraisers (exemption)", "Appraisers certified or licensed under F.S. 475, Part II, doing authorized appraisal work, and unit-rule railroad appraisers for tax purposes.", ""],
+    ["Transient rentals and securities dealers (exemption)", "Anyone renting hotel, motel or rooming-house space; SEC-registered dealers selling a business enterprise to an accredited investor.", "The securities exemption doesn't cover the land and buildings in the deal."],
+    ["Prima facie evidence", "Evidence that's accepted as true unless someone proves otherwise.", "Possessing a current real estate license is prima facie evidence in court that the holder is licensed."]
+  ],
+  3: [
+    ["DBPR", "Department of Business and Professional Regulation. Created by F.S. 455 to license, oversee and regulate businesses and professions in Florida.", "Part of the governor's executive branch, governed by F.S. 120, structured under F.S. 20.165. Your note: know statutes 475 and 455."],
+    ["Secretary of DBPR", "The head of the Department. Appointed by the governor and confirmed by the senate.", "No term limit: serves at the pleasure of the governor. Main offices are in Tallahassee."],
+    ["When should a profession be regulated? (F.S. 455)", "Only when unregulated practice can harm the public's health, safety or welfare; the harm clearly outweighs any anticompetitive effect; the public isn't protected by other laws; and less restrictive regulation isn't available.", "The intent of F.S. 455: regulate in the most cost-efficient way, keep license costs down and maximize public access."],
+    ["Division of Real Estate (DRE)", "The DBPR division that protects the public by regulating real estate and appraisal licensees through education and compliance.", "Offices are in Orlando and can't move without the legislature's permission."],
+    ["Director of the Division of Real Estate", "Appointed by the DBPR secretary, subject to approval by a majority of FREC.", "A salaried state employee who runs the Division day to day."],
+    ["F.S. 475: the four parts", "Part I: brokers, sales associates and schools (FREC, rules in 61J2)\nPart II: appraisers (FREAB, rules in 61J1)\nPart III: Commercial Real Estate Sales Commission Lien Act\nPart IV: Commercial Real Estate Leasing Commission Lien Act", "Parts III and IV let a broker place a lien for an earned commission on commercial property."],
+    ["How DBPR, DRE and FREC fit together", "DBPR delegates real estate rule-making and discipline to FREC. FREC has only 7 members and no employees, so the Division does the day-to-day work.", "Your note: DBPR → DRE → FREC (7 members)."],
+    ["DBPR duties", "1. Investigate applicants, licensees and unlicensed persons\n2. Prosecute violations of laws or rules\n3. Issue, renew and reissue licenses", ""],
+    ["Injunctions", "DBPR can SEEK an injunction from a court. It can't issue one itself.", "Used against a licensee who ignores a Department order, or against unlicensed activity."],
+    ["DBPR enforcement powers", "Cease-and-desist orders, subpoenas, oaths, depositions, and notices of noncompliance or citations.", "Citation fines can't exceed $5,000. Unlicensed activity can be fined up to $5,000 per offense."],
+    ["Mediation", "For economic offenses that licensees can fix. The parties have 14 days after a mediator contacts them to agree to mediate.", "It must be resolved within 60 days."],
+    ["Unlicensed activity enforcement", "A $5 fee from every applicant and renewal pays for it.", "As plaintiff in a civil action, DBPR can seek a penalty of $500 to $5,000 per offense."],
+    ["Giving false information to get a license", "A felony of the third degree.", "F.S. 455.2275"],
+    ["License renewal cycle", "Licenses are issued and renewed on a 2-year (biennial) cycle.", "A license can be denied or suspended for failing to pay court-ordered child support."],
+    ["Real estate school permits", "Every school, and each school location, needs a DBPR permit. Every instructor needs a permit to teach.", "Permits last 2 years and expire September 30 of odd-numbered years."],
+    ["Testing new applicants", "DBPR's Division of Professions handles testing through a private testing service.", "Exam questions are confidential. Stealing or copying them is a third-degree felony."],
+    ["FREC", "Florida Real Estate Commission: an administrative agency with powers delegated under F.S. 475 and F.A.C. 61J2.", ""],
+    ["Executive powers", "Keeping licensees and the public informed through publications (promulgation), plus investigating complaints.", "Can be used by the chairperson alone or delegated to any member by quorum vote."],
+    ["Quasi-legislative powers", "Making and passing rules. FREC rules are in F.A.C. Chapter 61J2.", "Cannot be delegated. Rules need no outside approval and take effect 20 days after filing with the Secretary of State."],
+    ["Quasi-judicial powers", "Disciplining: deny an application, reprimand, fine, place on probation, suspend or revoke.", "Cannot be delegated; requires a quorum vote."],
+    ["Ministerial powers", "Record keeping and clerical work.", "Done by Division employees, since FREC has no staff."],
+    ["FREC's four powers (memory card)", "Executive: keep licensees and the public informed.\nQuasi-legislative: make and pass rules.\nQuasi-judicial: impose discipline.\nMinisterial: record keeping.", "From your sticky note."],
+    ["FREC discipline options", "Deny an application, reprimand, fine up to $5,000 per offense, probation, suspension up to 10 years, or revocation.", "FREC must tell the Division of Florida Condominiums whenever it disciplines a licensee."],
+    ["FREC composition", "7 members appointed by the governor and confirmed by the senate:\n4 brokers active for the past 5 years\n1 broker or sales associate active for the past 2 years\n2 lay members never licensed", "At least one member must be 60 or older."],
+    ["FREC terms", "4-year terms, staggered so no more than two expire in one year.", "No more than two consecutive terms, but no maximum number of years overall. A replacement serves the rest of the term."],
+    ["FREC meetings", "At least once a month, usually in the Division offices in Orlando. A chairperson and vice chairperson are elected each year.", "A quorum, a majority (4 of 7), must be present to act."],
+    ["CE credit for attending FREC", "Licensees can earn 3 hours of specialty CE per renewal cycle by attending one legal docket session.", "The legal docket is the first day of a two-day meeting. Contact the Division in advance."],
+    ["Prima facie evidence", "Latin for \"on the face of it.\" FREC's certified documents are presumed true unless other evidence contradicts them.", "A rebuttable presumption. Certificates are signed by the chair or vice chair and bear the official seal."],
+    ["Initial license expiration", "Valid for a maximum of 2 years. All licenses expire on either March 31 or September 30.", "Example: issued April 15, 2023, it expires March 31, 2025. September 30, 2025 would be over the 2-year maximum."],
+    ["Initial issue", "The first license in a category, issued when the applicant passes the state exam. It starts inactive.", "It becomes active once employment is filed on the DBPR transaction form."],
+    ["Renewal", "Replaces the prior license and lasts 2 years. DBPR mails a renewal notice about 60 days before expiration to the last known address.", "Renew before expiration, with the fee and an affirmation that post-license or CE is done."],
+    ["Missing the first renewal", "The license becomes null and void. A sales associate has to start over with a new initial license.", "A broker can instead revert to a sales associate by completing 14 hours of CE within 6 months. Your note: failing to renew = null and void."],
+    ["Subsequent renewals", "Complete the 14-hour CE before each renewal after the first.", "Miss it and the license goes involuntary inactive (up to 2 years)."],
+    ["Military licensees", "May keep their license in good standing without renewing or paying fees for 2 years after discharge, if they don't practice real estate.", "Spouses stationed outside Florida are exempt while married and for 2 years after discharge. F.S. 455.02"],
+    ["Reissue", "A new license issued when the licensee's information changes, like a name or address, or when one is lost.", "Notify the Department within 10 days of a change. Your note: request a reissued license after updating information."],
+    ["Active license", "Required to perform real estate services. Passing the exam and filing employment with a broker or owner-developer makes it active.", "Keeping it active means completing education, paying fees and renewing on time."],
+    ["Ceases to be in force", "A sales associate's license status when they change employers, until the change is filed.", "Notify the Commission no later than 10 days after the change."],
+    ["Inactive license", "Can't legally be used to perform real estate services for compensation.", "There are two types: voluntary inactive and involuntary inactive."],
+    ["Voluntary inactive", "The licensee chooses not to practice, but still pays fees, completes CE and renews on time.", "Can stay this way indefinitely and activate any time by filing a DBPR transaction form."],
+    ["Involuntary inactive", "The licensee didn't renew a second or later license, or didn't meet CE.", "Your note: you don't renew. Can stay this way up to 2 years."],
+    ["Getting out of involuntary inactive", "Months 1–12: 14-hour CE plus a fee.\nMonths 13–24: 28-hour reactivation course plus a fee.", "Not fixed within 2 years? The license automatically expires (null and void). F.S. 475.183(2)"],
+    ["Void and ineffective license", "A license that looks valid on its face but isn't. No services can be performed under it.", "If a broker's license is suspended, revoked or void, all of their employees' licenses become automatically inactive."],
+    ["Brokerage firm with no active broker", "If a corporation, partnership, LLP or LLC has no active broker registered, the firm's registration and every licensee in the firm become automatically inactive.", "F.S. 475.17"],
+    ["Cancelled license", "The licensee decides to stop practicing and returns the license to the Department.", ""],
+    ["Current vs ineffective", "Current: the expiration date hasn't passed.\nIneffective (not current): the license wasn't renewed by its expiration date.", "Your note: ineffective = expired."],
+    ["Active vs inactive", "Active: current, and employed by a broker or owner-developer.\nInactive: lost employment, didn't renew on time, or chose to be inactive.", "Your note: active and inactive depend on employment."],
+    ["Suspended vs revoked", "Suspended: barred from practicing for a period of time.\nRevoked: permanently removed. No longer a licensee.", ""],
+    ["Valid vs invalid", "Valid: current, active, and not suspended or revoked.\nInvalid: any one of those conditions is missing.", "A cancelled license is invalid. Licensees may only practice with a valid license."],
+    ["Null and void", "A null and void license is no longer valid, and the license holder is out of the real estate business.", "Happens after missing the first-renewal post-license education, or after 2 years of involuntary inactive. Getting back in means starting over."],
+    ["Probation", "A penalty that lets the licensee keep practicing under conditions set by FREC.", ""],
+    ["Promulgation", "Officially publishing rules or information.", "Part of FREC's executive powers: keeping licensees and the public informed through publications."],
+    ["Multiple licenses", "A BROKER can be issued additional licenses to act in two or more capacities, by requesting multiple licenses.", "The broker must show a legitimate business reason that isn't harmful to the public or business associates. Not available to sales associates or broker associates. F.S. 475.215"],
+    ["Group license", "One license for a sales associate or broker associate who works for one owner-developer with affiliated organizations providing real estate services in different geographic areas.", "The owner-developer must prove the properties are owned by different entities whose ownership is connected and essentially the same. F.S. 475.215, F.A.C. 61J2-6.006"],
+    ["How many employers can a sales associate have?", "Only one registered employer at a time.", "The only exception is a group license with an owner-developer's affiliated companies. Applies to broker associates too."],
+    ["Legal advice to DBPR, FREC and the Division", "Provided by the Department of Legal Affairs, part of the Florida Attorney General's office.", "Assistant attorneys may be assigned to the Division in Orlando. Their main purpose is to represent the citizens of Florida."],
+    ["Outside counsel", "DBPR can hire outside lawyers and investigators when needed.", "The same outside person can't both give advice and provide legal services in the same matter. F.S. 455.221"]
+  ],
+  4: [
+    ["Common law", "Unwritten law that comes from old English common law and reflects the community's attitudes. Court decisions set precedents that other courts follow.", "Agency law comes from common law. No book can list every situation, so conduct must meet standards society accepts."],
+    ["How an agency relationship is created", "By the words or actions of a licensee. No compensation and no written agreement are required.", "Once created, the law imposes duties on the agent, and violating them can have severe consequences."],
+    ["Compensatory vs punitive damages", "Compensatory: paid for a loss that can be measured.\nPunitive: additional damages meant to punish the party at fault.", "Both come from civil courts."],
+    ["Statutory law", "Written statutes enacted by a unit of government, such as the legislature.", "Enforced by criminal courts with fines and imprisonment. F.S. 455 and F.S. 475 are statutes."],
+    ["Administrative law", "Statutes create administrative agencies to administer and enforce laws. DBPR (created by F.S. 455) and FREC (created by F.S. 475) are examples.", "Administrative agencies can also levy fines for violating the rules they administer."],
+    ["Law of agency", "The body of law covering the rights, duties and obligations in a principal-agent relationship.", "Your note: employer = principal."],
+    ["Agent", "Someone who acts on behalf of, and represents the interests of, another party.", "The relationship is based on trust and confidence, like husband and wife, doctor and patient, or attorney and client."],
+    ["Principal", "The employer who hires the agent and gives them some authority to act on their behalf.", "A customer becomes a principal once a single agency relationship is established."],
+    ["Special agent", "Authorized to perform ONE specific act. The authority is limited to what was granted.", "Example: a broker hired under a listing to sell one property. Your note: one transaction."],
+    ["General agent", "Acts for the principal on a continuing basis, but only within one trade or business.", "Example: a property manager for an investor. A sales associate is a general agent of their broker. Your note: one business."],
+    ["Universal agent", "Authorized to act for the principal in ALL matters, without limit. Usually created by a power of attorney.", "A broker can't sign a contract binding their principal unless they have power of attorney."],
+    ["The three types of agency", "Special agent, general agent and universal agent.", "Your note: they're distinguished by how much authority is granted to the agent."],
+    ["Subagent", "An agent of the agent, working for the principal. Subagency is an extension of another agency, not a separate type.", "A subagent owes the principal the same duties as the agent."],
+    ["Brokerage Relationship Disclosure Act", "Took effect October 1, 1997. Its purpose is to tell consumers what brokerage relationships are available and to educate the public.", "Created by the Commission, Florida REALTORS and the Department together. F.S. 475.2701–475.278"],
+    ["Customer", "A member of the public who is or may be a buyer or seller. They may or may not be represented by a licensee.", "Nothing in Florida law requires a customer to be represented."],
+    ["Single agent", "A broker who represents EITHER the buyer or the seller, but not both in the same transaction.", "Your note: a single agent cannot represent both the buyer and the seller."],
+    ["Transaction broker", "A broker who gives limited representation to the buyer, the seller or both, without a fiduciary relationship.", "Your note: serves both the buyer and seller, but only with limited representation. Not a fiduciary."],
+    ["Default relationship", "Every licensee is presumed to be a transaction broker unless a single agent or no brokerage relationship is set up in writing.", "F.S. 475.278(1)(b)"],
+    ["Fiduciary", "A person placed in a position of trust and confidence who must act in the principal's interest.", "From your note."],
+    ["Residential sale", "1–4 unit residential property (improved, or vacant land for 1–4 units), agricultural property of 10 acres or less, leases with an option to buy 1–4 units, or business interests in property of 1–4 units.", "Your note: 4 units or fewer, 10 acres or less."],
+    ["Disclosure requirements", "Written disclosure is required for single agency and nonrepresentation in residential sales.", "It isn't required for a transaction broker or for nonresidential deals. Your note: must be disclosed before engagement."],
+    ["Duties of ALL licensees", "1. Deal honestly and fairly\n2. Account for all funds\n3. Disclose all known facts that materially affect the value of residential property and aren't readily observable", "These apply in every relationship, including no brokerage relationship."],
+    ["Sellers' disclosure duty", "Sellers of residential property, along with licensees, must disclose known facts that materially affect value and aren't readily observable to the buyer.", ""],
+    ["Exempt from disclosure (1)", "When the licensee knows the buyer or seller is already represented; new homes sold by a developer's staff when the setting shows who they work for; nonresidential deals; rentals (unless with an option to buy 1–4 units).", "F.S. 475.278(5)(b)"],
+    ["Exempt from disclosure (2)", "Bona fide open houses or model homes that don't draw out confidential info; unanticipated casual conversations; answering general factual questions about advertised property.", "Also: general info about the licensee's qualifications, auctions, appraisals, and business sales (except property of 1–4 units)."],
+    ["Keeping disclosure documents", "Keep copies for 5 years from the date of execution, for every residential sale that results in a written contract, whether or not it closes.", "F.S. 475.5015"],
+    ["Extra duties for transaction brokers and single agents", "Use skill, care and diligence; present all offers and counteroffers in a timely manner, unless told otherwise in writing.", "Licensed professionals are held to a higher standard than the public."],
+    ["Presenting offers", "A broker must present ALL offers to their employer, including oral offers and offers with no deposit.", "Not presenting an offer is concealment or a breach of trust. The broker can't accept or reject an offer for the principal without power of attorney or listing terms that allow it."],
+    ["Limited confidentiality", "Unless waived in writing, a transaction broker can't disclose: that the seller will take less than the asking price, that the buyer will pay more than their offer, either party's motivation, that a party will accept other financing terms, or anything a party asks to keep confidential.", "Duty 6 on the Consent to Transition form."],
+    ["Transaction broker and loyalty", "A transaction broker has no fiduciary duty to either party. Neither buyer nor seller is responsible for the broker's actions.", "Customers give up the right to undivided loyalty. The broker can't favor one party over the other."],
+    ["Single agency relationship", "Created when a broker accepts employment under a single agency agreement to represent a seller OR a buyer.", "Trying to represent both is illegal dual agency."],
+    ["Principal's liability", "The principal can be held responsible for statements and actions of the licensee acting for them.", "Example: if the agent misstates something about the seller's property, the seller could be liable."],
+    ["Sales associates and the principal", "A sales associate or broker associate is registered with the broker as the broker's agent, and is never an agent of the broker's principal.", "Your note: principal → broker → sales associate. In the book's diagram, the sales associate is a subagent of the broker's principal, but never a direct agent of that principal."],
+    ["Single agent's duties", "Deal honestly and fairly; loyalty; confidentiality; obedience; full disclosure; account for all funds; skill, care and diligence; present all offers; disclose known facts affecting value.", "F.S. 475.278(3)(a)"],
+    ["Confidentiality (fiduciary duty)", "Keep any harmful information about the principal confidential, even after the relationship ends.", "Material defects in a property are NOT confidential and must be disclosed."],
+    ["Obedience (fiduciary duty)", "Obey all legal instructions of the principal.", "If the principal insists on something illegal, the agent must withdraw."],
+    ["Loyalty (fiduciary duty)", "Act in the principal's best interest, above anyone else's, including the agent's own.", "Seller's agent: try for the highest price. Buyer's agent: try for the lowest price."],
+    ["Full disclosure (fiduciary duty)", "Report any fact or rumor to the principal that might affect their decision.", "The principal may rely on the agent's statements without checking them."],
+    ["Breach of fiduciary duty", "The principal can sue for damages in civil court, and it may also be a crime.", "The licensee can also face discipline by FREC."],
+    ["Single Agent Notice", "Single agent duties must be disclosed in writing, either as a separate form or within a listing or representation agreement.", "Complete it before or when signing the agreement, or before showing property, whichever comes first."],
+    ["Single Agent Notice formatting", "If included in another document, the first sentence must be in bold UPPERCASE and at least as large as the rest of the text.", "You don't need to list every associate. \"And its associates\" is enough."],
+    ["In-house transaction", "When the same brokerage lists and sells a property.", "A single agent for both sides would be illegal dual agency, so the broker transitions to transaction broker."],
+    ["Consent to Transition to Transaction Broker", "Written consent from the principal to change from single agent to transaction broker. The only disclosure form that must be signed or initialed.", "Can be done at any time. The principal becomes a customer. First sentence in bold uppercase, same as the Single Agent Notice."],
+    ["Illegal dual agency", "A broker trying to act as single agent for both the buyer and the seller in the same transaction.", ""],
+    ["Limited representation", "The buyer or seller is not responsible for the licensee's acts, and gives up the right to the licensee's undivided loyalty.", "It lets the licensee help both buyer and seller, but never to the detriment of the other party."],
+    ["Designated sales associates", "In a NONRESIDENTIAL sale where buyer and seller each have assets of $1 million or more and both ask for single agent representation, the broker may designate one sales associate as single agent for each.", "Technically a dual agency the law allows here. It must be disclosed in writing, and both parties sign to confirm their assets. The broker advises both associates; information they learn stays confidential. F.S. 475.2755"],
+    ["Confidentiality after transitioning", "Moving from single agent to transaction broker does NOT end the confidentiality created during the single agency.", "The licensee still can't use or disclose that confidential information."],
+    ["Nonrepresentation (no brokerage relationship)", "The broker may provide specified services to a customer for a fee, without representing them.", "Avoid words or actions that suggest representation. That can create an implied agency, with fiduciary duties and possible civil damages. F.S. 475.278(4)"],
+    ["No Brokerage Relationship Notice", "Must be given in writing BEFORE showing property to a customer with no brokerage relationship. It does NOT need to be signed.", "Lists 3 duties. The first sentence must be in bold uppercase. Note the date and time it was given, and keep a copy in the transaction file."],
+    ["Duties by relationship: nonrepresentation", "1. Deal honestly and fairly\n2. Account for all funds\n3. Disclose known facts affecting the value of residential property", "3 duties. From the summary table."],
+    ["Duties by relationship: transaction broker", "The 3 basic duties, plus:\nSkill, care and diligence\nPresent all offers and counteroffers\nLimited confidentiality\nAny additional agreed duties", "7 duties."],
+    ["Duties by relationship: single agent", "The 3 basic duties, plus:\nSkill, care and diligence\nPresent all offers and counteroffers\nConfidentiality\nObedience\nLoyalty\nFull disclosure", "9 duties."],
+    ["Disclosure forms and how many duties", "No Brokerage Relationship Notice: 3 duties, no signature needed.\nSingle Agent Notice: 9 duties.\nConsent to Transition: 7 duties, must be initialed or signed.", ""],
+    ["Nonresidential sales", "The written disclosure requirements do NOT apply: commercial and industrial deals, auctions, appraisals, nonresidential leases and business sales.", "Brokers still have to pick a relationship (transaction broker, single agent or nonrepresentation) and owe its duties."],
+    ["Arm's length relationship", "Each party acts in their own best interest. The opposite of a fiduciary relationship.", "Licensees may NEVER deal at arm's length, because the law requires fairness and honesty. Your note: arm's length = opposing interests."],
+    ["Policy and procedures manual", "Each brokerage SHOULD have one to guide its associates. Not required by law, and not every office has one.", "It can protect the broker from future liability and help prevent disagreements. The office's policy on representation should be in writing."],
+    ["Licensees in a brokerage office", "Agents of the broker, and subagents of the broker's buyer or seller.", "They owe the broker's principals the same duties the broker does."],
+    ["Multiple listing service (MLS) and subagency", "A listing broker can use the MLS to offer subagency or compensation to cooperating brokers, transaction brokers or buyer's brokers.", "The fee split can be the same or different for each. A cooperating broker can decline subagency and work as a buyer's single agent, transaction broker, or with no brokerage relationship."],
+    ["Caveat emptor", "\"Let the buyer beware.\"", "Arm's length, buyer beware and caveat emptor describe opposing parties. Fiduciary is the opposite: trust."]
+  ],
+  5: [
+    ["Principal office", "Every active broker must open and keep an office registered with DBPR. It must have at least one enclosed room in a stationary building where negotiations and closings can happen privately.", "No phone, desk or checking account is required. The registration can move to a new location for the rest of the license period. F.S. 475.22"],
+    ["Office in the broker's home", "Allowed, as long as it doesn't conflict with local zoning ordinances.", "F.A.C. 61J2-10.022"],
+    ["Keeping books and records", "A broker must keep books, records and files for transactions for at least 5 years.", ""],
+    ["Branch office", "Any additional office where the broker does business must be registered as a branch office and its fee paid.", "Each branch is registered by location. A branch registration can't be transferred. If a branch moves, a new application and fee are needed."],
+    ["Branch office closed and reopened", "If it reopens in the same location during the same 2-year license period, the registration can be reissued without paying again.", ""],
+    ["Temporary shelter: branch office?", "Not one, unless sales associates or broker associates are permanently assigned there.", "Permanence, use and the activities there determine whether registration is required. F.A.C. 61J2-10.023"],
+    ["Office sign", "Required on or around the entrance of every office and branch, easily seen by people entering. Exterior or interior.", "Sole proprietor: the broker's name (or trade name) and \"Licensed (Lic.) Real Estate Broker.\" Partnership or corporation: the firm name, at least one broker's name, and \"Licensed Real Estate Broker.\""],
+    ["Associates' names on the sign", "Names of other brokers, sales associates and broker associates may appear on the sign.", "They must be placed beneath the required text and clearly separated, and each person's licensed status must be shown. F.S. 475.22"],
+    ["Advertising rule", "All legal advertising must be in the name, and under the supervision, of the broker, so a reasonable person knows they're dealing with a licensee.", "Every ad (yard signs, newspaper, business cards and more) must include the brokerage's registered name or trade name. Anyone may write ad copy, but the broker is responsible."],
+    ["Associate's name in ads", "A sales associate's or broker associate's name may appear, but the brokerage name must too.", "If personal names are used, the last name must appear exactly as registered with the Commission. Advertising your own listings without the broker's name is acting as a broker."],
+    ["Institutional advertising", "Advertising that creates an image for a brand or company, not a particular product.", "Example: a franchise's image ad."],
+    ["Specific (product) advertising", "Advertising designed to sell a particular product or service.", "Example: an ad featuring a specific home for sale."],
+    ["Internet advertising", "Must follow the same rules as printed ads. The brokerage name must be next to, directly above or below the point of contact information.", "Point of contact information: mailing address, phone, fax or email. F.A.C. 61J2-10.025(3)"],
+    ["Blind ad", "An illegal ad that leaves out the broker's registered or trade name, or leaves doubt that it's from a real estate broker.", "F.A.C. 61J2-10.025(2)"],
+    ["Team advertising", "A team or group name or logo used by licensees under the same broker.", "Must include \"team\" or \"group\" and can't use words like Brokerage, Realty, Properties or Associates. The broker keeps a written record of each team; one designated member is filed with the broker. F.A.C. 61J2-10.026"],
+    ["False advertising", "No ad may be fraudulent, false, deceptive or misleading.", "Example: only NAR members may call themselves REALTORS®. F.S. 475.42(1)(n)"],
+    ["Licensees selling their own property", "Allowed, but they must make clear they're a licensee acting for themselves, in writing, before serious negotiations.", "To advertise: 1) as an individual, without mentioning the license, or 2) through their brokerage, following normal advertising rules."],
+    ["Telephone solicitation", "Calls to get new customers are regulated by state and federal law, including the Do Not Call lists.", "Stiff penalties. Covered more in Chapter 7."],
+    ["Escrow funds", "Funds held by a third party for two parties in a transaction until the contract's obligations are met.", "The broker can be the third party, or a title company or attorney can."],
+    ["Earnest money deposit", "A deposit that shows the buyer's good faith, usually given with an offer.", "No contract: it goes back to the buyer. If the buyer defaults, it usually goes to the seller as liquidated damages."],
+    ["What can be a deposit?", "Money, personal property, real property, or anything else of value that can become cash.", "Postdated checks count as promissory notes and need the seller's approval."],
+    ["Bounced deposit check", "The broker isn't responsible if a personal check bounces, as long as it was deposited immediately.", "F.A.C. 61J2-14.008(1)(b)"],
+    ["Deposit held by a title company or attorney", "The buyer's broker must verify the deposit in writing within 10 business days of when it was due.", "If it isn't verified, the broker notifies the seller's broker (or the seller) in writing. F.A.C. 61J2-14.008(2)(b)"],
+    ["Escrow (trust) account", "A separate account for escrowed funds in a Florida commercial bank, credit union, savings and loan, or title company with trust powers.", "Brokers don't have to have one. If they do, it can't be in a stock or bond brokerage house."],
+    ["Commingling", "Mixing personal funds with escrowed funds. Illegal.", "Exceptions: up to $1,000 of the broker's money in a sales escrow account, and up to $5,000 in a property management account, to cover service charges. F.A.C. 61J2-14.010(2)"],
+    ["Conversion", "Misusing or keeping funds or property that belong to someone else. A form of fraud.", "Example: a broker who collects a commission and doesn't pay the other broker's share."],
+    ["Interest-bearing escrow account", "Allowed only with written agreement from all interested parties saying who gets the interest.", "Can't be held in a stock or bond brokerage."],
+    ["Depositing escrow funds: sales associate", "Must give the deposit to their broker no later than the end of the next business day.", "Weekends and legal holidays don't count as business days."],
+    ["\"Immediately\" (escrow)", "The broker must deposit the funds no later than the end of the third business day after receiving them.", "Example timeline: associate gets it Tuesday, broker by Wednesday, deposited by Friday. F.A.C. 61J2-14.008"],
+    ["Monthly reconciliation", "The broker compares the bank statement, the checkbook balance and the total trust liability every month, in writing, and signs and dates it.", "Any difference must be explained and corrected. Records can be inspected by DBPR at reasonable times."],
+    ["Escrow record keeping", "Keep escrow records at least 5 years. If used in litigation, keep them 2 years after it ends.", "The broker is ultimately responsible for the escrow account and must be a signatory."],
+    ["Escrow agent", "A broker holding escrow is an escrow agent for both parties.", "Until a binding contract exists, the money still belongs to the buyer."],
+    ["Escrow dispute", "Buyer and seller both demand the funds (conflicting demands), or the broker has a good-faith doubt about who is entitled to them.", "Notify FREC in writing within 15 business days, and start a settlement procedure within 30 business days of the last party's demand."],
+    ["Good-faith doubt", "When the broker honestly isn't sure who should get escrowed funds.", "Treated like conflicting demands: the same notice and settlement deadlines apply."],
+    ["Settlement procedures: MEAL", "Mediation\nEscrow Disbursement Order\nArbitration\nLitigation (court action)", "Also called escape procedures. Using one protects the broker from being charged with failure to account."],
+    ["Mediation (escrow)", "A neutral mediator helps the parties reach an agreement, with written consent from all. The mediator can't impose a decision.", "Must be done within 90 days of the last demand, or the broker must use another procedure."],
+    ["Escrow Disbursement Order (EDO)", "The broker asks FREC to decide who gets the funds. The broker must follow the order.", "Parties who disagree can appeal to the district court. A broker following an EDO is protected from double jeopardy. Notify FREC within 10 business days if it settles first."],
+    ["Arbitration (escrow)", "All parties agree in writing to have an arbitrator decide. The award is binding and enforceable in court.", ""],
+    ["Litigation (escrow)", "Settling the dispute in court.", "Bill of interpleader: the broker claims none of the money and turns it over to the court. Declaratory decree: the broker claims part of it and pays their own court costs."],
+    ["Escrow disbursement exemptions", "1. A condo buyer cancels within the 3-day rescission period.\n2. A financing contingency fails and the broker is escrow agent.\n3. A HUD purchase, released as HUD's contract directs.", "The broker can disburse without notifying FREC or using a settlement procedure."],
+    ["Disputed commission", "A dispute between a broker and a party over a commission is NOT an escrow dispute.", "EDO and FREC don't apply. It's settled between the parties or in civil court."],
+    ["Rental information", "A licensee who charges a prospective tenant for rental information must give a written contract with the refund terms.", "Rental info violations: first-degree misdemeanor, up to 1 year and up to $1,000. F.S. 475.453"],
+    ["Rental information refunds", "Didn't get a rental: 75% refund, if requested within 30 days.\nInfo was not current or accurate: 100% refund, if requested within 30 days.", "The licensee must give the contract before collecting the fee."],
+    ["Broker's commission", "Brokers earn compensation for professional services they were hired to perform. The amount is set by agreement between the broker and their employer.", "Commission rates aren't set by law."],
+    ["Listing contract", "The broker's employment contract, stating the terms and conditions to earn compensation.", "The broker earns the commission when they find a ready, willing and able buyer who meets the seller's terms, whether or not the sale closes."],
+    ["Trade name (fictitious name)", "Any name a person does business under other than their legal name. Registered with the Department of State, Division of Corporations, and advertised once in a newspaper in the county of the business.", "A sole proprietor broker using a trade name is exempt from that state filing but must register it with DBPR. Sales associates can't use trade names; they register only under their legal name or a P.A. F.S. 865.09"],
+    ["When is the commission earned (effecting a sale)?", "When hired to effect a sale, the broker earns compensation at consummation (the closing) of the contract.", "Florida listing agreements are usually written as \"find a purchaser\" contracts, earned once a ready, willing and able buyer is found."],
+    ["Buyer's employment contract", "A contract stating the terms of a broker's employment by a potential buyer.", "If the broker finds a property meeting the buyer's criteria and a contract is signed, the broker may be entitled to compensation whether or not the buyer closes."],
+    ["Payment of commission", "The broker must be properly licensed, and so must any sales associate who performed the service, for the broker to collect.", "A broker may collect from both parties only if both know and agree. A broker can't pay an unlicensed, unaffiliated person for real estate services."],
+    ["Earning vs losing the right to a commission", "Earned by performance: once performed, the employer owes it even if they don't close.\nLost by: renouncing it, abandoning the employment, or misconduct that damages the employer.", "If no amount was agreed, the customary rate for that type of property is due."],
+    ["Lien on residential property for a commission", "Not allowed unless a Florida court has issued a judgment for the commission, or the listing or employment contract permits a lien.", "F.S. 475.42(1)(i). Nonresidential lien rights are covered in Chapter 9."],
+    ["Commission split disputes between brokers", "Brokers may split a commission with permission of all parties.", "A broker who collects the whole commission and won't pay the agreed share can be charged with failure to account, a form of fraud."],
+    ["Procuring cause of sale", "The broker who first produces a ready, willing and able buyer.", "Showing the property first isn't enough. Defined as \"a continuous and uninterrupted series of events that results in the conclusion of a sale.\""],
+    ["Uniform commission rates", "Illegal. Competing brokers can't discuss or try to fix the rates they charge.", "Sherman Antitrust Act and Clayton Act. Commissions are always negotiated between the broker and the buyer or seller."],
+    ["Illegal commission", "Collecting a commission from both parties without the knowledge and consent of both.", "An act of fraud. The broker must return both commissions and faces discipline."],
+    ["Overage (secret profit, unjust enrichment)", "Receiving more than the agreed or customary commission without the employer knowing.", "Example: the broker buys at list price and resells higher instead of presenting the higher offer. Both seller and buyer can sue."],
+    ["Kickbacks (RESPA Section 8)", "A broker may not give or accept a fee or kickback for referring settlement (closing) services on federally related mortgage loans.", "Exception: the broker actually performs the service, holds any license it needs, and discloses the fee to and gets consent from all parties. F.A.C. 61J2-10.028(1)"],
+    ["Referral fees", "RESPA allows brokers to pay referral fees to each other. A Florida broker may pay a fee to, or share a commission with, a broker licensed in another state or country.", "The out-of-state broker can't take part in the Florida transaction. No referral fees to unlicensed people, including gifts or reimbursed expenses."],
+    ["Broker's liability for fraud", "A broker is legally liable for the acts of partners, sales associates and employees within the scope of their employment.", "In a civil fraud suit, the plaintiff only needs to show the statement was relied on. Fraud can be accidental, and restitution is no defense."],
+    ["Sales associate as agent", "A sales associate or broker associate is an agent of the broker or owner-developer, never of the broker's principal.", "All work is in the employer's name and under their control. Listings and contracts belong to the employer."],
+    ["Sales associate's name", "A sales associate must register and work under their legal name. They can't use a trade name.", "They can't accept money or property except in the employer's name."],
+    ["Sales associate compensation", "Paid only by their one employer. They can't contract with or collect commissions directly from the public.", "The broker may give written permission for a closing agent to pay the associate directly. Money earned while licensed can be paid even after the license becomes invalid."],
+    ["Suing for a commission", "A sales associate can only sue their own employer for unpaid compensation.", "Not the buyer, the seller or anyone else."],
+    ["Change of employer or address", "Report it to the Commission within 10 days.", "Failing to report an address change can bring a $500 fine. F.S. 475.23"],
+    ["Florida resident becomes a nonresident", "Notify the Commission within 60 days and follow the nonresident requirements.", "F.S. 475.180(2)"],
+    ["Leaving an employer", "A sales associate can't take listings, records or files without the employer's permission.", "Taking originals may be larceny. Fiduciary duties of confidentiality continue after the employment ends."],
+    ["Sole proprietorship", "A business owned by one individual, who is personally liable for it and for employees' acts within their employment.", "No state filing is required to form one."],
+    ["Sole proprietor broker", "May register and operate as a broker with a current, valid broker license.", "Can operate under their personal name or a trade name. F.A.C. 61J2-10.034"],
+    ["General partnership", "Two or more people agree to share profits or losses. Can be oral or written, with no state filing.", "Interests don't have to be equal. Marriage doesn't automatically make spouses partners. It dissolves on a partner's death, withdrawal, bankruptcy, a new partner, agreement or court order."],
+    ["Jointly and severally liable", "Each partner can be held personally responsible for all of the partnership's debts, together or individually.", "In a general partnership, one partner's acts bind all the partners."],
+    ["Real estate brokerage partnership", "Needs at least one partner who is an active broker. Partners may be active or inactive brokers, or unlicensed.", "Sales associates and broker associates can't be partners. Registered with the Department."],
+    ["Partnership with only one broker", "If that broker dies or leaves, the vacancy must be filled within 14 calendar days.", "Existing business may be finished, but no new business. Otherwise the registration is cancelled and all licenses go inactive. F.S. 475.15"],
+    ["Limited partnership", "At least one general partner (personally liable, runs the business) and at least one limited partner (liable only up to the investment).", "A limited partner can't take part in management. If they do, or their name is in the partnership name, they're treated as a general partner. Must be filed with the Secretary of State (F.S. 620)."],
+    ["Real estate brokerage limited partnership", "At least one general partner must be an active broker. Limited partners can be anyone, licensed or not.", "Sales associates and broker associates can't be general partners. Limited partners with active licenses may do brokerage work but not management."],
+    ["Limited liability partnership (LLP)", "Partners are liable for their own acts and partnership debts, but not for other partners' acts or debts.", "Must register with the Secretary of State, include \"LLP\" in its name, and carry liability insurance of at least $100,000 per partner. F.S. 620.782–788"],
+    ["Joint venture", "A partnership for one transaction or a set number of transactions. Can be formed orally or in writing, with no state filing.", "Participants are jointly and severally liable, but can't bind each other to new transactions. A joint venture can't register as a brokerage; if it's made of separate brokers, it doesn't need to, since they're already licensed."],
+    ["Corporation for profit", "An artificial person created by law, owned by stockholders, who elect a board of directors that appoints officers.", "Stockholders, directors and officers usually aren't personally liable. The corporate veil can be pierced for fraud or torts."],
+    ["Corporate name", "Must include \"Corporation,\" \"Company,\" \"Incorporated,\" \"Corp.,\" \"Inc.\" or \"Co.\"", "\"Company\" alone is only allowed if it's a corporation or adds \"not Inc.\""],
+    ["Domestic vs foreign vs alien corporation", "Domestic: formed under Florida law.\nForeign: formed in another state.\nAlien: formed in another country.", "The charter (articles of incorporation) is filed with the Secretary of State."],
+    ["Real estate brokerage corporation", "At least one officer must be an active broker. It registers with the Department and must prove it legally exists.", "Sales associates and broker associates can't be officers or directors, but anyone can be a stockholder. F.S. 475.15"],
+    ["Corporation with only one broker", "If that broker leaves, the vacancy must be filled within 14 calendar days.", "No new business in the meantime. Otherwise the registration is cancelled and all licenses go involuntary inactive."],
+    ["Brokerage corporation vs real estate corporation", "A real estate corporation may buy and sell real estate for itself only.\nA brokerage corporation provides brokerage services to others and must register.", ""],
+    ["Limited liability company (LLC)", "Owners (members) are liable only for their own acts, not the company's or other members'. Registered with the Secretary of State.", "The name must include \"limited liability company\" or \"LLC.\" A limited liability brokerage company registers the same way as a brokerage corporation."],
+    ["Professional association (PA)", "A sales associate or broker associate can form a PA or professional LLC and be licensed in its name.", "It can't serve as an officer in a brokerage corporation or a partner in a brokerage partnership. Name must include \"professional association\" or \"P.A.\" (or \"chartered\")."],
+    ["Not-for-profit corporation", "May buy, sell and lease real estate for its own use. Employees can do real estate work for it without a license if paid only a salary.", "It may not register with the Department as a real estate brokerage corporation."],
+    ["Cooperative association (co-op)", "A corporation formed to do limited commercial business, often for a group marketing one product, like citrus growers.", "May buy, sell and lease real estate for itself, but can't register as a brokerage. F.S. 619"],
+    ["Corporation sole", "Formed under common law for religious purposes. No state filing needed.", "It can buy and sell real estate for its own use. Title is held by a clerical person (like a bishop); if they die or are removed, title passes to their successor. It can't register as a brokerage."],
+    ["Which business entities can register as brokerages?", "CAN register: corporation for profit, general partnership, LLC, LLP, limited partnership, sole proprietorship.\nCANNOT: business trust, cooperative association, corporation sole, joint venture, not-for-profit corporation, unincorporated association.", "From the Summary of Business Formations, page 88."],
+    ["Business trust (Massachusetts trust)", "Created by filing a declaration of trust with the Secretary of State. Units sold to the public are like shares of stock and need Department of Financial Services approval.", "Trustees manage it; unit holders are usually liable only up to their investment. It can buy and sell its own real estate but can't register as a brokerage. Anyone doing brokerage for it needs an active license. F.S. 609"],
+    ["Unincorporated association", "A group formed for some purpose without creating a formal organization, like many homeowner associations.", "Members are treated like partners: jointly and severally liable for all its actions. A trustee holds title. It can't register as a brokerage."],
+    ["Ostensible partnership (quasi-partnership)", "Not a true partnership. Created when people, like brokers, act in a way that makes the public believe a partnership exists.", "Those who created the impression become jointly and severally liable, and FREC can discipline everyone involved. Each broker must show separate status: own desk, phone, stationery, signs and ads."],
+    ["Brokers sharing office space", "Allowed, as long as each broker clearly shows their separate status.", "They may share a secretary and the expense, but each needs their own business sign, desk, phone and stationery. Franchise members aren't an ostensible partnership if ads show each is a member of the franchise."],
+    ["Personal assistants (unlicensed)", "FREC publishes a list of activities an unlicensed assistant may do. Available on the Florida REALTORS website.", "Anything that requires a license (negotiating, giving opinions, showing property alone) must be done by a licensee."],
+    ["Unlicensed assistant: office tasks", "Answer the phone and forward calls; submit listings and changes to the MLS; follow up on loan commitments; assemble closing documents; get public records; have keys made; type contract forms for approval; monitor licenses and personnel files; compute commission checks; order repairs as directed.", "From the FREC list (2019)."],
+    ["Unlicensed assistant: field and marketing tasks", "Write ads and flyers for the licensee and broker to approve; place signs on property; act as a courier; be at an open house for security or to hand out brochures; schedule appointments for licensees to show property; gather information for a CMA or appraisal.", "Can answer listing questions only with objective, broker-approved printed information."],
+    ["Unlicensed assistant: money tasks", "Receive, record and deposit earnest money, security deposits and advance rents only as directed. Place routine calls on late rent payments.", "They can't negotiate or make decisions about the money."],
+    ["Real estate syndicate", "An organization formed to invest in real estate. Common forms: limited partnership, corporation, investment trust, general partnership, joint tenancy or tenancy in common.", "Licensees should get an attorney's advice to avoid violating securities laws."],
+    ["Investments classified as securities", "Some real estate investments, like condos sold with rental management agreements as investments, are securities.", "Selling them needs a securities license as well as a real estate license. A licensee can list and sell property owned by a limited partnership or corporation, but not interests or shares in it."],
+    ["Which businesses must file with the Secretary of State?", "Must file: business trust, cooperative association, corporation for profit, LLC, LLP, limited partnership, not-for-profit corporation.\nNot required: corporation sole, general partnership, joint venture, sole proprietorship, unincorporated association.", "Rule of thumb: businesses that protect owners from personal liability file. Those whose members are jointly and severally liable don't."]
+  ]
+};
+function deckFor(ch){
+  const own=DECKS[ch]||[];
+  if(own.length) return own.map((c,i)=>({id:`f${ch}-${i}`,ch,num:i+1,front:c[0],back:c[1],note:c[2]||"",custom:true}));
+  return Q.filter(q=>q.ch===ch).map(q=>({id:`q${q.id}`,ch,num:q.num,front:q.q,back:q.o[q.a],key:L[q.a],note:q.why,custom:false}));
+}
+
+const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+let missed=new Set(store.get("flre-missed",[]));
+const S={chapter:"all",mode:"practice",shuffle:false,list:[],i:0,answers:{},submitted:false,flipped:false};
+const $=s=>document.querySelector(s);
+const L="abcd";
+
+function buildChapters(){
+  const box=$("#chapters");
+  const opts=[["all","All",Q.length],...CHS.map(n=>[String(n),"Ch "+n,Q.filter(q=>q.ch===n).length])];
+  box.innerHTML=opts.map(([v,t,n])=>`<button class="chip" data-ch="${v}" title="${v==="all"?"All chapters":CH[v]}">${t}<span class="n">${n}</span></button>`).join("");
+  box.onclick=e=>{const b=e.target.closest("[data-ch]");if(!b)return;S.chapter=b.dataset.ch;start();};
+}
+function pool(){
+  let p=Q.filter(q=>S.chapter==="all"||String(q.ch)===S.chapter);
+  if(S.mode==="missed")p=p.filter(q=>missed.has(q.id));
+  if(S.mode==="flash")p=CHS.filter(c=>S.chapter==="all"||String(c)===S.chapter).flatMap(deckFor);
+  if(S.shuffle){p=p.slice();for(let i=p.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[p[i],p[j]]=[p[j],p[i]];}}
+  return p;
+}
+function start(){S.list=pool();S.i=0;S.answers={};S.submitted=false;S.flipped=false;render();}
+function saveMissed(){store.set("flre-missed",[...missed]);}
+
+function syncChips(){
+  document.querySelectorAll("[data-ch]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.ch===S.chapter));
+  document.querySelectorAll("[data-ch]").forEach(b=>{const chs=b.dataset.ch==="all"?CHS:[+b.dataset.ch];
+    b.querySelector(".n").textContent=chs.reduce((t,c)=>t+(S.mode==="flash"?deckFor(c).length:Q.filter(q=>q.ch===c).length),0);});
+  document.querySelectorAll("[data-mode]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.mode===S.mode));
+  $("#shuffle").setAttribute("aria-pressed",S.shuffle);
+  $("#missedN").textContent=missed.size;
+}
+
+function render(){
+  syncChips();
+  const main=$("#main");
+  if(!S.list.length){
+    main.innerHTML=`<div class="empty">${S.mode==="missed"?"No missed questions here yet. Anything you get wrong in Practice or Exam mode shows up in this list.":`${S.chapter!=="all"&&!Q.some(q=>String(q.ch)===S.chapter)?`No practice questions for Chapter ${S.chapter} yet. Switch to Flashcards to study it.`:"No questions match."}`}</div>`;
+    $("#qLabel").textContent="Question"; $("#qCount").textContent="";
+    $("#rail").innerHTML=""; renderStats(); return;
+  }
+  if(S.mode==="exam"&&S.submitted&&S.i===-1){renderScore();return;}
+  if(S.mode==="flash"){renderFlash();return;}
+  const q=S.list[S.i], picked=S.answers[q.id];
+  const reveal = S.mode!=="exam" ? picked!==undefined : S.submitted;
+  const optsHtml=q.o.map((t,k)=>{
+    let cls="opt", tag="";
+    if(reveal){ if(k===q.a){cls+=" right";tag="Correct";} else if(k===picked){cls+=" wrong";tag="Your answer";} }
+    else if(k===picked){cls+=" sel";tag="Selected";}
+    return `<button class="${cls}" data-k="${k}" ${reveal?"disabled":""}><span class="k">${L[k]}</span><span class="txt">${t}</span><span class="tag">${tag}</span></button>`;
+  }).join("");
+  let why="";
+  if(reveal){
+    const ok=picked===q.a;
+    why=`<div class="why"><strong>${picked===undefined?"Not answered.":ok?"Correct.":"Incorrect."} The answer is ${L[q.a]}.</strong><p>${q.why}</p></div>`;
+  }
+  const last=S.i===S.list.length-1;
+  let right;
+  if(S.mode==="exam"&&!S.submitted) right = (last?"":`<button class="btn" id="submit">Submit exam</button>`) +
+      (last?`<button class="btn primary" id="submit">Submit exam</button>`:`<button class="btn primary" id="next">Next</button>`);
+  else if(S.mode==="exam") right = `<button class="btn primary" id="toScore">Back to score</button>`;
+  else right = `<button class="btn primary" id="next" ${last?"disabled":""}>Next</button>`;
+  $("#qLabel").textContent=`Chapter ${q.ch} · ${CH[q.ch]}`;
+  $("#qCount").textContent=`Q${q.num} · ${S.i+1} of ${S.list.length}`;
+  main.innerHTML=`<article class="card" aria-live="polite">
+    <h2 class="qtext">${q.q}</h2>
+    <div class="opts">${optsHtml}</div>${why}
+    <div class="nav"><button class="btn" id="prev" ${S.i===0?"disabled":""}>Back</button><div class="right">${right}</div></div>
+  </article>`;
+  main.querySelector(".opts").onclick=e=>{const b=e.target.closest(".opt");if(!b||b.disabled)return;choose(+b.dataset.k);};
+  const on=(id,fn)=>{const el=document.getElementById(id);if(el)el.onclick=fn;};
+  on("prev",()=>{S.i--;render();});
+  on("next",()=>{S.i++;render();});
+  on("submit",submitExam);
+  on("toScore",()=>{S.i=-1;render();});
+  renderRail();
+}
+function renderFlash(){
+  const c=S.list[S.i], last=S.i===S.list.length-1, f=S.flipped;
+  $("#qLabel").textContent=`Flashcards · Chapter ${c.ch} · ${CH[c.ch]}`;
+  $("#qCount").textContent=`Card ${S.i+1} of ${S.list.length}`;
+  const face = f
+    ? `<span class="side">Back</span><span class="fa">${c.key?`<span class="k">${c.key}</span>`:""}${c.back.replace(/\n/g,"<br>")}</span>${c.note?`<span class="fw">${c.note}</span>`:""}`
+    : `<span class="side">Front</span><span class="fq">${c.front}</span><span class="hint">Tap the card or press Space to flip</span>`;
+  const right = f
+    ? `<button class="btn" id="learn">Still learning</button><button class="btn primary" id="know">Know it</button>`
+    : `<button class="btn" id="skip" ${last?"disabled":""}>Skip</button><button class="btn primary" id="flipBtn">Flip</button>`;
+  $("#main").innerHTML=`<article class="card">
+    <button class="flash${f?" back":""}" id="flip" aria-label="${f?"Show front":"Show back"}" aria-live="polite">${face}</button>
+    <div class="nav"><button class="btn" id="prev" ${S.i===0?"disabled":""}>Back</button><div class="right">${right}</div></div>
+  </article>`;
+  const on=(id,fn)=>{const el=document.getElementById(id);if(el)el.onclick=fn;};
+  const flip=()=>{S.flipped=!S.flipped;renderFlash();document.getElementById("flip").focus();};
+  const go=d=>{S.i+=d;S.flipped=false;render();};
+  const mark=k=>{ S.answers[c.id]=k?"know":"learn"; if(!last)go(1); else render(); };
+  on("flip",flip); on("flipBtn",flip);
+  on("prev",()=>go(-1)); on("skip",()=>go(1));
+  on("know",()=>mark(true)); on("learn",()=>mark(false));
+  renderRail();
+}
+const isRight=q=>S.mode==="flash"?S.answers[q.id]==="know":S.answers[q.id]===q.a;
+function renderStats(){
+  const fl=S.mode==="flash";
+  $("#sRightL").textContent=fl?"Known":"Correct";
+  $("#lgOk").textContent=fl?"Know it":"Correct";
+  $("#lgNo").textContent=fl?"Still learning":"Missed";
+  const ids=S.list.map(q=>q.id).filter(id=>S.answers[id]!==undefined);
+  const reveal=S.mode!=="exam"||S.submitted;
+  const right=S.list.filter(isRight).length;
+  $("#sDone").textContent=`${ids.length}/${S.list.length}`;
+  $("#sRight").textContent=reveal?right:"–";
+  $("#sPct").textContent=reveal&&ids.length?Math.round(right/ids.length*100)+"%":"–";
+}
+function choose(k){
+  const q=S.list[S.i];
+  S.answers[q.id]=k;
+  if(S.mode!=="exam"){
+    if(k===q.a){ if(S.mode==="missed")missed.delete(q.id); } else missed.add(q.id);
+    saveMissed();
+  }
+  render();
+}
+function submitExam(){
+  S.submitted=true;
+  S.list.forEach(q=>{ if(S.answers[q.id]===q.a)missed.delete(q.id); else missed.add(q.id); });
+  saveMissed(); S.i=-1; render();
+}
+function renderRail(){
+  $("#rail").innerHTML=S.list.map((q,i)=>{
+    const p=S.answers[q.id]; let c="dot";
+    const reveal=S.mode!=="exam"||S.submitted;
+    if(p!==undefined)c+=reveal?(isRight(q)?" ok":" no"):" ans";
+    if(i===S.i)c+=" cur";
+    return `<button class="${c}" data-i="${i}" aria-label="${S.mode==="flash"?"Card":"Question"} ${i+1}">${i+1}</button>`;
+  }).join("");
+  $("#rail").onclick=e=>{const b=e.target.closest("[data-i]");if(!b)return;S.i=+b.dataset.i;S.flipped=false;render();};
+  renderStats();
+}
+function renderScore(){
+  const tot=S.list.length, right=S.list.filter(q=>S.answers[q.id]===q.a).length, pct=Math.round(right/tot*100);
+  const by=CHS.map(c=>{const qs=S.list.filter(q=>q.ch===c);return {c,n:qs.length,r:qs.filter(q=>S.answers[q.id]===q.a).length};}).filter(x=>x.n);
+  $("#qLabel").textContent="Exam results"; $("#qCount").textContent=`${right} of ${tot} correct`;
+  $("#main").innerHTML=`<div class="score">
+    <div class="big">${pct}%</div>
+    <div class="pass">${pct>=75?"Passing. The state exam requires 75%.":"Below the 75% the state exam requires. Review the missed questions in Progress below."}</div>
+    <div class="bars">${by.map(b=>`<div class="bar"><span>Chapter ${b.c}</span><div class="track"><div class="fill" style="width:${b.r/b.n*100}%"></div></div><span class="v">${b.r}/${b.n}</span></div>`).join("")}</div>
+    <div class="nav"><button class="btn" id="review">Review answers</button><button class="btn primary" id="again">Retake</button></div>
+  </div>`;
+  $("#review").onclick=()=>{S.i=0;render();};
+  $("#again").onclick=start;
+  renderRail();
+}
+
+document.querySelectorAll("[data-mode]").forEach(b=>b.onclick=()=>{S.mode=b.dataset.mode;start();});
+$("#shuffle").onclick=()=>{S.shuffle=!S.shuffle;start();};
+document.addEventListener("keydown",e=>{
+  if(e.target.closest("input,textarea"))return;
+  if(S.mode==="flash"&&(e.key===" "||e.key==="Enter")&&e.target.id!=="flip"&&!e.target.closest("button")){e.preventDefault();document.getElementById("flip")?.click();return;}
+  if(S.mode==="flash"&&e.key===" "&&e.target.id==="flip")return;
+  const k="abcd1234".indexOf(e.key.toLowerCase());
+  if(k>=0&&S.i>=0){const b=document.querySelector(`.opt[data-k="${k%4}"]`);if(b&&!b.disabled)b.click();}
+  if(e.key==="ArrowRight"){const n=document.getElementById(S.mode==="flash"?"skip":"next");if(n&&!n.disabled)n.click();}
+  if(e.key==="ArrowLeft"){const p=document.getElementById("prev");if(p&&!p.disabled)p.click();}
+});
+buildChapters(); start();
+</script>
+</body>
+</html>
