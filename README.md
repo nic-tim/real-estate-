@@ -3,7 +3,7 @@
 A study site for the Florida Real Estate Sales Associate pre-license course:
 practice exams with answers and explanations, and flashcards for each chapter.
 
-Live at https://nic-tim.github.io/deane/real-estate/ once GitHub Pages is on
+Live at https://nic-tim.github.io/real-estate-/ once GitHub Pages is on
 (Settings → Pages → Deploy from a branch → main, / (root)).
 
 ## Files
