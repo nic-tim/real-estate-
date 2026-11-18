@@ -259,7 +259,45 @@ const Q = [
 // One deck per chapter. Each card: [front, back] or [front, back, note].
 // A chapter with an empty deck uses its practice questions as cards until real cards are added.
 const DECKS = {
-  1: [],
+  1: [
+    ["Real estate brokerage", "A business in which a broker acts as an agent or intermediary between two or more people in the sale, purchase or rental of real estate, for compensation.", "Main activities: marketing, property transfer, market conditions and valuation."],
+    ["Absentee owner", "Someone who buys income property as an investment and depends on professionals to manage it.", "These professionals are property managers."],
+    ["Property management", "Managing income property for owners while maximizing the profitability of the investment.", "Absentee ownership is a big reason property management keeps growing."],
+    ["Property manager", "Locates tenants, collects rent, and handles payment of taxes, insurance and other expenses.", "Paid a percentage of the rents collected. Does NOT write leases, but may assist with attorney-prepared leases."],
+    ["Community association manager (CAM)", "A property manager working for a community association needs a CAM license when the association has more than 10 units or an annual budget over $100,000.", "F.S. 468.431(2)"],
+    ["Business broker", "A real estate broker who specializes in the listing and sale of businesses.", "Must be able to analyze financial statements and understand balance sheets. No separate license needed."],
+    ["Business opportunity", "The sale of a business, which includes going concern value in addition to the real property.", ""],
+    ["Going concern value", "The value of a business as an operating company: its income, tangible and intangible assets, goodwill and property value.", ""],
+    ["Appraisal", "Developing an independent, impartial and objective analysis or opinion of the value of real property.", "Appraisal fees are based on the time, effort and expense involved, never on the property's value."],
+    ["Appraiser", "A person who develops appraisals. Must be registered, licensed or certified under F.S. 475, Part II.", "Appraisers must follow USPAP."],
+    ["Comparative market analysis (CMA)", "A value estimate a licensee prepares from recent sales of similar properties in the same neighborhood.", "It uses many appraisal concepts but may NOT be called an appraisal."],
+    ["Broker price opinion (BPO)", "A licensee's estimate of a property's likely selling price, often ordered by a lender in a short sale.", "Real estate licensees may be asked to complete a BPO. Less thorough than an appraisal, but more analysis than a basic CMA."],
+    ["FIRREA", "Financial Institutions Reform, Recovery, and Enforcement Act of 1989.", "Title XI requires appraisals in federally related transactions to be done by state licensed or certified appraisers."],
+    ["USPAP", "Uniform Standards of Professional Appraisal Practice, developed by the Appraisal Foundation.", "All appraisals, federally related or not, must be prepared in compliance with USPAP."],
+    ["Federally related transaction", "A transaction in which a federally regulated lending institution makes a loan secured by real property.", "Requires an appraisal by a licensed or certified appraiser."],
+    ["Counseling", "Analyzing existing or potential projects and giving expert advice, usually for a flat fee.", "Requires the highest level of knowledge and experience of any real estate service."],
+    ["Farm area (target market)", "Concentrating on one neighborhood, or on one type or style of property.", "Called farming. Considered one of the best ways to succeed in real estate."],
+    ["Multiple listing service (MLS)", "A marketing tool that puts your listings in front of thousands of other licensees, with a detailed database of properties for sale or lease.", "Access usually comes with local REALTOR association membership."],
+    ["Follow-up", "Staying in touch with past customers to earn referrals and repeat business.", "Contact them at least twice a year: the anniversary of their purchase, flyers, notes or postcards with your name, photo and contact info."],
+    ["Residential transaction", "Sale of improved residential property of 4 units or fewer, unimproved land intended for 4 units or fewer, or agricultural property of 10 acres or less.", "Also leases with an option to buy 4 or fewer units, and business interests in property of 4 or fewer units. F.S. 475.278(5)(a). Most licensees work in residential."],
+    ["Agricultural sales", "Sales of farm and ranch property.", "Two common characteristics: large amounts of land and large sums of money."],
+    ["Mortgage loan originator (MLO)", "An individual or business that arranges loans between lenders and borrowers. They do NOT make loans.", "Must have a separate license issued by the Florida Department of Financial Services (FDFS)."],
+    ["Where can mortgage loans be obtained?", "Mortgage companies, commercial banks, savings and loans, credit unions, life insurance companies, trusts and individuals.", "Marked as a test question in your notes."],
+    ["Property insurance", "A separate license is required to sell insurance.", "Property in a flood hazard area must have flood insurance to qualify as security for a loan."],
+    ["Three phases of development and construction", "1. Land acquisition\n2. Subdividing and development\n3. Construction", "The subdivision plat map gets recorded during subdividing."],
+    ["Subdivision plat map", "Map of a subdivision showing named streets and numbered blocks and lots, recorded once approved by the city or county.", "Building permits cannot be issued until the plat is part of the public record."],
+    ["Dedication", "Ownership of the streets and sidewalks is conveyed from the developer to the city or county.", ""],
+    ["Custom building", "Built to the customer's specifications.", "Know the definitions and examples of all three building types for the test."],
+    ["Speculative building", "Built before a buyer is secured.", ""],
+    ["Tract building", "A developer acquires a large tract of land, records a subdivision plat map, and uses a model center to sell.", ""],
+    ["National Association of REALTORS (NAR)", "The nation's largest trade and professional association. Goal: preserving the right of individuals to own real property through an exchange of information.", "Members agree to follow a strict Code of Ethics."],
+    ["REALTOR", "A registered trademark that may be used only by members of NAR.", "Having a license does not make someone a REALTOR."],
+    ["Florida REALTORS (FAR)", "The Florida Association of REALTORS, the largest trade association in the state.", "Offers legal advice, forms, market studies, technology and education to members."],
+    ["Local Board (Association) of REALTORS", "Joining a local board also gives membership in FAR and NAR.", "If a broker is a member, all of their sales associates must also join. Non-members may not call themselves REALTORS and don't get MLS access."],
+    ["Role of government: local level", "Planning and zoning, property taxation, building and health codes, and building moratoriums.", "Marked as on the test in your notes."],
+    ["Role of government: state level", "Developments of Regional Impact (DRI), DEP and DEO; roads, waterways and multi-county issues.", "The state can offer opportunities like tax reductions."],
+    ["Role of government: federal level", "Legislation and policy, especially lending. The Federal Reserve's monetary policy has a daily effect on real estate.", ""]
+  ],
   2: [],
   3: [],
   4: []
@@ -294,6 +332,8 @@ function saveMissed(){store.set("flre-missed",[...missed]);}
 
 function syncChips(){
   document.querySelectorAll("[data-ch]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.ch===S.chapter));
+  document.querySelectorAll("[data-ch]").forEach(b=>{const chs=b.dataset.ch==="all"?[1,2,3,4]:[+b.dataset.ch];
+    b.querySelector(".n").textContent=chs.reduce((t,c)=>t+(S.mode==="flash"?deckFor(c).length:Q.filter(q=>q.ch===c).length),0);});
   document.querySelectorAll("[data-mode]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.mode===S.mode));
   $("#shuffle").setAttribute("aria-pressed",S.shuffle);
   $("#missedN").textContent=missed.size;
@@ -348,7 +388,7 @@ function renderFlash(){
   $("#qLabel").textContent=`Flashcards · Chapter ${c.ch} · ${CH[c.ch]}`;
   $("#qCount").textContent=`Card ${S.i+1} of ${S.list.length}`;
   const face = f
-    ? `<span class="side">Back</span><span class="fa">${c.key?`<span class="k">${c.key}</span>`:""}${c.back}</span>${c.note?`<span class="fw">${c.note}</span>`:""}`
+    ? `<span class="side">Back</span><span class="fa">${c.key?`<span class="k">${c.key}</span>`:""}${c.back.replace(/\n/g,"<br>")}</span>${c.note?`<span class="fw">${c.note}</span>`:""}`
     : `<span class="side">Front</span><span class="fq">${c.front}</span><span class="hint">Tap the card or press Space to flip</span>`;
   const right = f
     ? `<button class="btn" id="learn">Still learning</button><button class="btn primary" id="know">Know it</button>`
