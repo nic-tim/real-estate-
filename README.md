@@ -93,7 +93,7 @@ Optional: set `deane.src` to supplied artwork to replace the drawn Deane.
 
 ## Real estate review (`real-estate/`)
 
-A separate, self-contained study page: the Chapter 1–4 practice exam questions
+A separate, self-contained study page: the Chapter 1–5 practice exam questions
 from the Florida Real Estate Sales Associate pre-license course, with practice
 and exam modes, answers and explanations. Everything is in
 `real-estate/index.html`; it doesn't use any of the DEANE files.

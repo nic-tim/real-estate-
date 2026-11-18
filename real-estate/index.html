@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Practice exam questions for Chapters 1–4 of the Florida Real Estate Sales Associate pre-license course, with answers and explanations.">
+<meta name="description" content="Practice exam questions and flashcards for Chapters 1–5 of the Florida Real Estate Sales Associate pre-license course, with answers and explanations.">
 <title>Florida Sales Associate Review</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -125,7 +125,7 @@ footer{color:var(--muted);font-size:13px;padding-top:16px;border-top:1px solid v
 <div class="wrap">
   <header>
     <h1>Florida Sales Associate Review</h1>
-    <p class="sub">Chapters 1–4 practice exams · 72 questions with answers, explanations and flashcards</p>
+    <p class="sub">Chapters 1–5 · practice exams with explanations and flashcards</p>
   </header>
 
   <section class="section setup" aria-labelledby="h-setup">
@@ -173,7 +173,8 @@ footer{color:var(--muted);font-size:13px;padding-top:16px;border-top:1px solid v
 </div>
 
 <script>
-const CH = {1:"The Real Estate Business",2:"License Law & Qualifications",3:"License Law & Commission Rules",4:"Authorized Relationships"};
+const CHS = [1,2,3,4,5];
+const CH = {1:"The Real Estate Business",2:"License Law & Qualifications",3:"License Law & Commission Rules",4:"Authorized Relationships",5:"Brokerage Activities & Procedures"};
 const Q = [
 // ---------- Chapter 1 ----------
 [1,"Which of the following statements is true regarding a mortgage loan originator?",["A mortgage loan originator is the same as a mortgage lender.","A mortgage loan originator must have a separate license.","A mortgage loan originator makes loans.","A mortgage loan originator must have a real estate license."],1,"Loan originators are licensed separately under F.S. 494. They take applications and negotiate terms; the lender is the one that actually funds the loan."],
@@ -504,6 +505,54 @@ const DECKS = {
     ["Licensees in a brokerage office", "Agents of the broker, and subagents of the broker's buyer or seller.", "They owe the broker's principals the same duties the broker does."],
     ["Multiple listing service (MLS) and subagency", "A listing broker can use the MLS to offer subagency or compensation to cooperating brokers, transaction brokers or buyer's brokers.", "The fee split can be the same or different for each. A cooperating broker can decline subagency and work as a buyer's single agent, transaction broker, or with no brokerage relationship."],
     ["Caveat emptor", "\"Let the buyer beware.\"", "Arm's length, buyer beware and caveat emptor describe opposing parties. Fiduciary is the opposite: trust."]
+  ],
+  5: [
+    ["Principal office", "Every active broker must open and keep an office registered with DBPR. It must have at least one enclosed room in a stationary building where negotiations and closings can happen privately.", "No phone, desk or checking account is required. The registration can move to a new location for the rest of the license period. F.S. 475.22"],
+    ["Office in the broker's home", "Allowed, as long as it doesn't conflict with local zoning ordinances.", "F.A.C. 61J2-10.022"],
+    ["Keeping books and records", "A broker must keep books, records and files for transactions for at least 5 years.", ""],
+    ["Branch office", "Any additional office where the broker does business must be registered as a branch office and its fee paid.", "Each branch is registered by location. A branch registration can't be transferred. If a branch moves, a new application and fee are needed."],
+    ["Branch office closed and reopened", "If it reopens in the same location during the same 2-year license period, the registration can be reissued without paying again.", ""],
+    ["Temporary shelter: branch office?", "Not one, unless sales associates or broker associates are permanently assigned there.", "Permanence, use and the activities there determine whether registration is required. F.A.C. 61J2-10.023"],
+    ["Office sign", "Required on or around the entrance of every office and branch, easily seen by people entering. Exterior or interior.", "Sole proprietor: the broker's name (or trade name) and \"Licensed (Lic.) Real Estate Broker.\" Partnership or corporation: the firm name, at least one broker's name, and \"Licensed Real Estate Broker.\""],
+    ["Associates' names on the sign", "Names of other brokers, sales associates and broker associates may appear on the sign.", "They must be placed beneath the required text and clearly separated, and each person's licensed status must be shown. F.S. 475.22"],
+    ["Advertising rule", "All legal advertising must be in the name, and under the supervision, of the broker, so a reasonable person knows they're dealing with a licensee.", "Every ad (yard signs, newspaper, business cards and more) must include the brokerage's registered name or trade name. Anyone may write ad copy, but the broker is responsible."],
+    ["Associate's name in ads", "A sales associate's or broker associate's name may appear, but the brokerage name must too.", "If personal names are used, the last name must appear exactly as registered with the Commission. Advertising your own listings without the broker's name is acting as a broker."],
+    ["Institutional advertising", "Advertising that creates an image for a brand or company, not a particular product.", "Example: a franchise's image ad."],
+    ["Specific (product) advertising", "Advertising designed to sell a particular product or service.", "Example: an ad featuring a specific home for sale."],
+    ["Internet advertising", "Must follow the same rules as printed ads. The brokerage name must be next to, directly above or below the point of contact information.", "Point of contact information: mailing address, phone, fax or email. F.A.C. 61J2-10.025(3)"],
+    ["Blind ad", "An illegal ad that leaves out the broker's registered or trade name, or leaves doubt that it's from a real estate broker.", "F.A.C. 61J2-10.025(2)"],
+    ["Team advertising", "A team or group name or logo used by licensees under the same broker.", "Must include \"team\" or \"group\" and can't use words like Brokerage, Realty, Properties or Associates. The broker keeps a written record of each team; one designated member is filed with the broker. F.A.C. 61J2-10.026"],
+    ["False advertising", "No ad may be fraudulent, false, deceptive or misleading.", "Example: only NAR members may call themselves REALTORS®. F.S. 475.42(1)(n)"],
+    ["Licensees selling their own property", "Allowed, but they must make clear they're a licensee acting for themselves, in writing, before serious negotiations.", "To advertise: 1) as an individual, without mentioning the license, or 2) through their brokerage, following normal advertising rules."],
+    ["Telephone solicitation", "Calls to get new customers are regulated by state and federal law, including the Do Not Call lists.", "Stiff penalties. Covered more in Chapter 7."],
+    ["Escrow funds", "Funds held by a third party for two parties in a transaction until the contract's obligations are met.", "The broker can be the third party, or a title company or attorney can."],
+    ["Earnest money deposit", "A deposit that shows the buyer's good faith, usually given with an offer.", "No contract: it goes back to the buyer. If the buyer defaults, it usually goes to the seller as liquidated damages."],
+    ["What can be a deposit?", "Money, personal property, real property, or anything else of value that can become cash.", "Postdated checks count as promissory notes and need the seller's approval."],
+    ["Bounced deposit check", "The broker isn't responsible if a personal check bounces, as long as it was deposited immediately.", "F.A.C. 61J2-14.008(1)(b)"],
+    ["Deposit held by a title company or attorney", "The buyer's broker must verify the deposit in writing within 10 business days of when it was due.", "If it isn't verified, the broker notifies the seller's broker (or the seller) in writing. F.A.C. 61J2-14.008(2)(b)"],
+    ["Escrow (trust) account", "A separate account for escrowed funds in a Florida commercial bank, credit union, savings and loan, or title company with trust powers.", "Brokers don't have to have one. If they do, it can't be in a stock or bond brokerage house."],
+    ["Commingling", "Mixing personal funds with escrowed funds. Illegal.", "Exceptions: up to $1,000 of the broker's money in a sales escrow account, and up to $5,000 in a property management account, to cover service charges. F.A.C. 61J2-14.010(2)"],
+    ["Conversion", "Misusing or keeping funds or property that belong to someone else. A form of fraud.", "Example: a broker who collects a commission and doesn't pay the other broker's share."],
+    ["Interest-bearing escrow account", "Allowed only with written agreement from all interested parties saying who gets the interest.", "Can't be held in a stock or bond brokerage."],
+    ["Depositing escrow funds: sales associate", "Must give the deposit to their broker no later than the end of the next business day.", "Weekends and legal holidays don't count as business days."],
+    ["\"Immediately\" (escrow)", "The broker must deposit the funds no later than the end of the third business day after receiving them.", "Example timeline: associate gets it Tuesday, broker by Wednesday, deposited by Friday. F.A.C. 61J2-14.008"],
+    ["Monthly reconciliation", "The broker compares the bank statement, the checkbook balance and the total trust liability every month, in writing, and signs and dates it.", "Any difference must be explained and corrected. Records can be inspected by DBPR at reasonable times."],
+    ["Escrow record keeping", "Keep escrow records at least 5 years. If used in litigation, keep them 2 years after it ends.", "The broker is ultimately responsible for the escrow account and must be a signatory."],
+    ["Escrow agent", "A broker holding escrow is an escrow agent for both parties.", "Until a binding contract exists, the money still belongs to the buyer."],
+    ["Escrow dispute", "Buyer and seller both demand the funds (conflicting demands), or the broker has a good-faith doubt about who is entitled to them.", "Notify FREC in writing within 15 business days, and start a settlement procedure within 30 business days of the last party's demand."],
+    ["Good-faith doubt", "When the broker honestly isn't sure who should get escrowed funds.", "Treated like conflicting demands: the same notice and settlement deadlines apply."],
+    ["Settlement procedures: MEAL", "Mediation\nEscrow Disbursement Order\nArbitration\nLitigation (court action)", "Also called escape procedures. Using one protects the broker from being charged with failure to account."],
+    ["Mediation (escrow)", "A neutral mediator helps the parties reach an agreement, with written consent from all. The mediator can't impose a decision.", "Must be done within 90 days of the last demand, or the broker must use another procedure."],
+    ["Escrow Disbursement Order (EDO)", "The broker asks FREC to decide who gets the funds. The broker must follow the order.", "Parties who disagree can appeal to the district court. A broker following an EDO is protected from double jeopardy. Notify FREC within 10 business days if it settles first."],
+    ["Arbitration (escrow)", "All parties agree in writing to have an arbitrator decide. The award is binding and enforceable in court.", ""],
+    ["Litigation (escrow)", "Settling the dispute in court.", "Bill of interpleader: the broker claims none of the money and turns it over to the court. Declaratory decree: the broker claims part of it and pays their own court costs."],
+    ["Escrow disbursement exemptions", "1. A condo buyer cancels within the 3-day rescission period.\n2. A financing contingency fails and the broker is escrow agent.\n3. A HUD purchase, released as HUD's contract directs.", "The broker can disburse without notifying FREC or using a settlement procedure."],
+    ["Disputed commission", "A dispute between a broker and a party over a commission is NOT an escrow dispute.", "EDO and FREC don't apply. It's settled between the parties or in civil court."],
+    ["Rental information", "A licensee who charges a prospective tenant for rental information must give a written contract with the refund terms.", "Rental info violations: first-degree misdemeanor, up to 1 year and up to $1,000. F.S. 475.453"],
+    ["Rental information refunds", "Didn't get a rental: 75% refund, if requested within 30 days.\nInfo was not current or accurate: 100% refund, if requested within 30 days.", "The licensee must give the contract before collecting the fee."],
+    ["Broker's commission", "Brokers earn compensation for professional services they were hired to perform. The amount is set by agreement between the broker and their employer.", "Commission rates aren't set by law."],
+    ["Listing contract", "The broker's employment contract, stating the terms and conditions to earn compensation.", "The broker earns the commission when they find a ready, willing and able buyer who meets the seller's terms, whether or not the sale closes."],
+    ["Trade name (fictitious name)", "A name other than the broker's own name that a brokerage registers and does business under.", "It must appear in all advertising and on the office sign."]
   ]
 };
 function deckFor(ch){
@@ -520,14 +569,14 @@ const L="abcd";
 
 function buildChapters(){
   const box=$("#chapters");
-  const opts=[["all","All",Q.length],...[1,2,3,4].map(n=>[String(n),"Ch "+n,Q.filter(q=>q.ch===n).length])];
+  const opts=[["all","All",Q.length],...CHS.map(n=>[String(n),"Ch "+n,Q.filter(q=>q.ch===n).length])];
   box.innerHTML=opts.map(([v,t,n])=>`<button class="chip" data-ch="${v}" title="${v==="all"?"All chapters":CH[v]}">${t}<span class="n">${n}</span></button>`).join("");
   box.onclick=e=>{const b=e.target.closest("[data-ch]");if(!b)return;S.chapter=b.dataset.ch;start();};
 }
 function pool(){
   let p=Q.filter(q=>S.chapter==="all"||String(q.ch)===S.chapter);
   if(S.mode==="missed")p=p.filter(q=>missed.has(q.id));
-  if(S.mode==="flash")p=[1,2,3,4].filter(c=>S.chapter==="all"||String(c)===S.chapter).flatMap(deckFor);
+  if(S.mode==="flash")p=CHS.filter(c=>S.chapter==="all"||String(c)===S.chapter).flatMap(deckFor);
   if(S.shuffle){p=p.slice();for(let i=p.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[p[i],p[j]]=[p[j],p[i]];}}
   return p;
 }
@@ -536,7 +585,7 @@ function saveMissed(){store.set("flre-missed",[...missed]);}
 
 function syncChips(){
   document.querySelectorAll("[data-ch]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.ch===S.chapter));
-  document.querySelectorAll("[data-ch]").forEach(b=>{const chs=b.dataset.ch==="all"?[1,2,3,4]:[+b.dataset.ch];
+  document.querySelectorAll("[data-ch]").forEach(b=>{const chs=b.dataset.ch==="all"?CHS:[+b.dataset.ch];
     b.querySelector(".n").textContent=chs.reduce((t,c)=>t+(S.mode==="flash"?deckFor(c).length:Q.filter(q=>q.ch===c).length),0);});
   document.querySelectorAll("[data-mode]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.mode===S.mode));
   $("#shuffle").setAttribute("aria-pressed",S.shuffle);
@@ -547,7 +596,7 @@ function render(){
   syncChips();
   const main=$("#main");
   if(!S.list.length){
-    main.innerHTML=`<div class="empty">${S.mode==="missed"?"No missed questions here yet. Anything you get wrong in Practice or Exam mode shows up in this list.":"No questions match."}</div>`;
+    main.innerHTML=`<div class="empty">${S.mode==="missed"?"No missed questions here yet. Anything you get wrong in Practice or Exam mode shows up in this list.":`${S.chapter!=="all"&&!Q.some(q=>String(q.ch)===S.chapter)?`No practice questions for Chapter ${S.chapter} yet. Switch to Flashcards to study it.`:"No questions match."}`}</div>`;
     $("#qLabel").textContent="Question"; $("#qCount").textContent="";
     $("#rail").innerHTML=""; renderStats(); return;
   }
@@ -650,7 +699,7 @@ function renderRail(){
 }
 function renderScore(){
   const tot=S.list.length, right=S.list.filter(q=>S.answers[q.id]===q.a).length, pct=Math.round(right/tot*100);
-  const by=[1,2,3,4].map(c=>{const qs=S.list.filter(q=>q.ch===c);return {c,n:qs.length,r:qs.filter(q=>S.answers[q.id]===q.a).length};}).filter(x=>x.n);
+  const by=CHS.map(c=>{const qs=S.list.filter(q=>q.ch===c);return {c,n:qs.length,r:qs.filter(q=>S.answers[q.id]===q.a).length};}).filter(x=>x.n);
   $("#qLabel").textContent="Exam results"; $("#qCount").textContent=`${right} of ${tot} correct`;
   $("#main").innerHTML=`<div class="score">
     <div class="big">${pct}%</div>
