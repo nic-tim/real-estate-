@@ -71,6 +71,22 @@ h1{font-weight:600;font-size:clamp(24px,5vw,30px);line-height:1.2;margin:0;lette
 .btn.primary{background:var(--ink);border-color:var(--ink);color:var(--surface)}
 .btn:disabled{opacity:.4;cursor:default}
 
+/* Flashcards */
+.flash{font:inherit;color:var(--ink);width:100%;min-height:260px;display:flex;flex-direction:column;justify-content:center;align-items:center;
+  gap:14px;text-align:center;padding:28px 22px;background:var(--surface);border:1px solid var(--line);border-radius:8px;cursor:pointer;
+  box-shadow:0 1px 0 var(--line),0 4px 0 -1px var(--surface),0 5px 0 -1px var(--line)}
+.flash:hover{border-color:var(--ink)}
+.flash:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.flash.back{background:var(--soft)}
+.flash .side{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.flash .fq{font-weight:500;font-size:clamp(18px,4vw,21px);line-height:1.4;max-width:46ch;text-wrap:pretty}
+.flash .fa{font-weight:600;font-size:clamp(18px,4vw,21px);line-height:1.4;max-width:46ch;text-wrap:pretty}
+.flash .fa .k{font-family:var(--f-mono);font-weight:500;margin-right:8px}
+.flash .fw{color:var(--muted);max-width:52ch;font-size:15px}
+.flash .hint{font-size:13px;color:var(--muted)}
+@media (prefers-reduced-motion:no-preference){.flash .fq,.flash .fa,.flash .fw{animation:fadeIn .18s ease-out}}
+@keyframes fadeIn{from{opacity:.2}to{opacity:1}}
+
 /* Progress */
 .progress{padding:16px;display:flex;flex-direction:column;gap:14px}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:6px}
@@ -109,7 +125,7 @@ footer{color:var(--muted);font-size:13px;padding-top:16px;border-top:1px solid v
 <div class="wrap">
   <header>
     <h1>Florida Sales Associate Review</h1>
-    <p class="sub">Chapters 1–4 practice exams · 72 questions with answers and explanations</p>
+    <p class="sub">Chapters 1–4 practice exams · 72 questions with answers, explanations and flashcards</p>
   </header>
 
   <section class="section setup" aria-labelledby="h-setup">
@@ -124,6 +140,7 @@ footer{color:var(--muted);font-size:13px;padding-top:16px;border-top:1px solid v
         <div class="seg" role="group" aria-label="Mode">
           <button class="chip" id="m-practice" data-mode="practice">Practice</button>
           <button class="chip" id="m-exam" data-mode="exam">Exam</button>
+          <button class="chip" id="m-flash" data-mode="flash">Flashcards</button>
           <button class="chip" id="m-missed" data-mode="missed">Missed<span class="n" id="missedN">0</span></button>
         </div>
       </div>
@@ -144,11 +161,11 @@ footer{color:var(--muted);font-size:13px;padding-top:16px;border-top:1px solid v
     <div class="panel progress">
       <div class="stats">
         <div class="stat"><b id="sDone">0</b><span>Answered</span></div>
-        <div class="stat"><b id="sRight">0</b><span>Correct</span></div>
+        <div class="stat"><b id="sRight">0</b><span id="sRightL">Correct</span></div>
         <div class="stat"><b id="sPct">–</b><span>Score</span></div>
       </div>
       <div class="rail" id="rail" aria-label="Question navigator"></div>
-      <div class="legend"><span><i class="l-ok"></i>Correct</span><span><i class="l-no"></i>Missed</span><span><i></i>Not answered</span></div>
+      <div class="legend"><span><i class="l-ok"></i><span id="lgOk">Correct</span></span><span><i class="l-no"></i><span id="lgNo">Missed</span></span><span><i></i>Not answered</span></div>
     </div>
   </section>
 
@@ -238,9 +255,24 @@ const Q = [
 // number within chapter
 {const c={};Q.forEach(x=>{c[x.ch]=(c[x.ch]||0)+1;x.num=c[x.ch];});}
 
+// ---------- Flashcard decks ----------
+// One deck per chapter. Each card: [front, back] or [front, back, note].
+// A chapter with an empty deck uses its practice questions as cards until real cards are added.
+const DECKS = {
+  1: [],
+  2: [],
+  3: [],
+  4: []
+};
+function deckFor(ch){
+  const own=DECKS[ch]||[];
+  if(own.length) return own.map((c,i)=>({id:`f${ch}-${i}`,ch,num:i+1,front:c[0],back:c[1],note:c[2]||"",custom:true}));
+  return Q.filter(q=>q.ch===ch).map(q=>({id:`q${q.id}`,ch,num:q.num,front:q.q,back:q.o[q.a],key:L[q.a],note:q.why,custom:false}));
+}
+
 const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
 let missed=new Set(store.get("flre-missed",[]));
-const S={chapter:"all",mode:"practice",shuffle:false,list:[],i:0,answers:{},submitted:false};
+const S={chapter:"all",mode:"practice",shuffle:false,list:[],i:0,answers:{},submitted:false,flipped:false};
 const $=s=>document.querySelector(s);
 const L="abcd";
 
@@ -253,10 +285,11 @@ function buildChapters(){
 function pool(){
   let p=Q.filter(q=>S.chapter==="all"||String(q.ch)===S.chapter);
   if(S.mode==="missed")p=p.filter(q=>missed.has(q.id));
+  if(S.mode==="flash")p=[1,2,3,4].filter(c=>S.chapter==="all"||String(c)===S.chapter).flatMap(deckFor);
   if(S.shuffle){p=p.slice();for(let i=p.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[p[i],p[j]]=[p[j],p[i]];}}
   return p;
 }
-function start(){S.list=pool();S.i=0;S.answers={};S.submitted=false;render();}
+function start(){S.list=pool();S.i=0;S.answers={};S.submitted=false;S.flipped=false;render();}
 function saveMissed(){store.set("flre-missed",[...missed]);}
 
 function syncChips(){
@@ -275,6 +308,7 @@ function render(){
     $("#rail").innerHTML=""; renderStats(); return;
   }
   if(S.mode==="exam"&&S.submitted&&S.i===-1){renderScore();return;}
+  if(S.mode==="flash"){renderFlash();return;}
   const q=S.list[S.i], picked=S.answers[q.id];
   const reveal = S.mode!=="exam" ? picked!==undefined : S.submitted;
   const optsHtml=q.o.map((t,k)=>{
@@ -309,10 +343,38 @@ function render(){
   on("toScore",()=>{S.i=-1;render();});
   renderRail();
 }
+function renderFlash(){
+  const c=S.list[S.i], last=S.i===S.list.length-1, f=S.flipped;
+  $("#qLabel").textContent=`Flashcards · Chapter ${c.ch} · ${CH[c.ch]}`;
+  $("#qCount").textContent=`Card ${S.i+1} of ${S.list.length}`;
+  const face = f
+    ? `<span class="side">Back</span><span class="fa">${c.key?`<span class="k">${c.key}</span>`:""}${c.back}</span>${c.note?`<span class="fw">${c.note}</span>`:""}`
+    : `<span class="side">Front</span><span class="fq">${c.front}</span><span class="hint">Tap the card or press Space to flip</span>`;
+  const right = f
+    ? `<button class="btn" id="learn">Still learning</button><button class="btn primary" id="know">Know it</button>`
+    : `<button class="btn" id="skip" ${last?"disabled":""}>Skip</button><button class="btn primary" id="flipBtn">Flip</button>`;
+  $("#main").innerHTML=`<article class="card">
+    <button class="flash${f?" back":""}" id="flip" aria-label="${f?"Show front":"Show back"}" aria-live="polite">${face}</button>
+    <div class="nav"><button class="btn" id="prev" ${S.i===0?"disabled":""}>Back</button><div class="right">${right}</div></div>
+  </article>`;
+  const on=(id,fn)=>{const el=document.getElementById(id);if(el)el.onclick=fn;};
+  const flip=()=>{S.flipped=!S.flipped;renderFlash();document.getElementById("flip").focus();};
+  const go=d=>{S.i+=d;S.flipped=false;render();};
+  const mark=k=>{ S.answers[c.id]=k?"know":"learn"; if(!last)go(1); else render(); };
+  on("flip",flip); on("flipBtn",flip);
+  on("prev",()=>go(-1)); on("skip",()=>go(1));
+  on("know",()=>mark(true)); on("learn",()=>mark(false));
+  renderRail();
+}
+const isRight=q=>S.mode==="flash"?S.answers[q.id]==="know":S.answers[q.id]===q.a;
 function renderStats(){
+  const fl=S.mode==="flash";
+  $("#sRightL").textContent=fl?"Known":"Correct";
+  $("#lgOk").textContent=fl?"Know it":"Correct";
+  $("#lgNo").textContent=fl?"Still learning":"Missed";
   const ids=S.list.map(q=>q.id).filter(id=>S.answers[id]!==undefined);
   const reveal=S.mode!=="exam"||S.submitted;
-  const right=S.list.filter(q=>S.answers[q.id]===q.a).length;
+  const right=S.list.filter(isRight).length;
   $("#sDone").textContent=`${ids.length}/${S.list.length}`;
   $("#sRight").textContent=reveal?right:"–";
   $("#sPct").textContent=reveal&&ids.length?Math.round(right/ids.length*100)+"%":"–";
@@ -335,11 +397,11 @@ function renderRail(){
   $("#rail").innerHTML=S.list.map((q,i)=>{
     const p=S.answers[q.id]; let c="dot";
     const reveal=S.mode!=="exam"||S.submitted;
-    if(p!==undefined)c+=reveal?(p===q.a?" ok":" no"):" ans";
+    if(p!==undefined)c+=reveal?(isRight(q)?" ok":" no"):" ans";
     if(i===S.i)c+=" cur";
-    return `<button class="${c}" data-i="${i}" aria-label="Question ${i+1}">${i+1}</button>`;
+    return `<button class="${c}" data-i="${i}" aria-label="${S.mode==="flash"?"Card":"Question"} ${i+1}">${i+1}</button>`;
   }).join("");
-  $("#rail").onclick=e=>{const b=e.target.closest("[data-i]");if(!b)return;S.i=+b.dataset.i;render();};
+  $("#rail").onclick=e=>{const b=e.target.closest("[data-i]");if(!b)return;S.i=+b.dataset.i;S.flipped=false;render();};
   renderStats();
 }
 function renderScore(){
@@ -361,9 +423,11 @@ document.querySelectorAll("[data-mode]").forEach(b=>b.onclick=()=>{S.mode=b.data
 $("#shuffle").onclick=()=>{S.shuffle=!S.shuffle;start();};
 document.addEventListener("keydown",e=>{
   if(e.target.closest("input,textarea"))return;
+  if(S.mode==="flash"&&(e.key===" "||e.key==="Enter")&&e.target.id!=="flip"&&!e.target.closest("button")){e.preventDefault();document.getElementById("flip")?.click();return;}
+  if(S.mode==="flash"&&e.key===" "&&e.target.id==="flip")return;
   const k="abcd1234".indexOf(e.key.toLowerCase());
   if(k>=0&&S.i>=0){const b=document.querySelector(`.opt[data-k="${k%4}"]`);if(b&&!b.disabled)b.click();}
-  if(e.key==="ArrowRight"){const n=document.getElementById("next");if(n&&!n.disabled)n.click();}
+  if(e.key==="ArrowRight"){const n=document.getElementById(S.mode==="flash"?"skip":"next");if(n&&!n.disabled)n.click();}
   if(e.key==="ArrowLeft"){const p=document.getElementById("prev");if(p&&!p.disabled)p.click();}
 });
 buildChapters(); start();

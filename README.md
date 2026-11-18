@@ -96,5 +96,7 @@ Optional: set `deane.src` to supplied artwork to replace the drawn Deane.
 A separate, self-contained study page: the Chapter 1–4 practice exam questions
 from the Florida Real Estate Sales Associate pre-license course, with practice
 and exam modes, answers and explanations. Everything is in
-`real-estate/index.html`; it doesn't use any of the DEANE files. Served at
+`real-estate/index.html`; it doesn't use any of the DEANE files.
+Flashcard decks are set per chapter in the `DECKS` object in that file; a
+chapter with an empty deck uses its practice questions as cards. Served at
 `/real-estate/` (run `npm start`, then open http://localhost:4321/real-estate/).
