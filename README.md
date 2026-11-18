@@ -90,3 +90,11 @@ every field with test values and checks the real buy link, copy, verify links
 and that no placeholder or preview label remains.
 
 Optional: set `deane.src` to supplied artwork to replace the drawn Deane.
+
+## Real estate review (`real-estate/`)
+
+A separate, self-contained study page: the Chapter 1–4 practice exam questions
+from the Florida Real Estate Sales Associate pre-license course, with practice
+and exam modes, answers and explanations. Everything is in
+`real-estate/index.html`; it doesn't use any of the DEANE files. Served at
+`/real-estate/` (run `npm start`, then open http://localhost:4321/real-estate/).
